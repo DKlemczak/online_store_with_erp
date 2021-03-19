@@ -15,7 +15,9 @@ class CreateProductsGroupTable extends Migration
     {
         Schema::create('products_group', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name', 100)->unique();
+            $table->boolean('on_navbar');
+            $table->foreignId('group_id')->nullable()->constrained('products_group')->cascade();
         });
     }
 

@@ -36,9 +36,14 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('index') }}">Strona główna</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('products') }}">Produkty</a>
-                        </li>
+                        <!-- DK:Pętla listująca grupy produktów, które nie są podgrupami i mają ustawioną wartość on_navbar na 1. W środku przekierowanie do listy produktów danej kategorii. Podkategorie listują się po najechaniu-->
+                        @foreach($GlobalNavbarGroups as $GlobalNavbarGroup)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('products', [$GlobalNavbarGroup->id]) }}">{!!$GlobalNavbarGroup->name!!}</a>
+                            </li>
+                            <!-- DK:Potem dodam żeby każda nadrzędna kategoria miała listowane podkategorie. Nadkategorie będą listować wszystkie produkty swoich podkategorii. Podkategorie tylko swoje własne-->
+                        @endforeach
+                        <!-- Koniec pętli -->
                     </ul>
 
                     <!-- Right Side Of Navbar -->

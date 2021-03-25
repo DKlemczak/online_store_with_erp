@@ -14,6 +14,7 @@ class ProductController extends Controller
 
         if($product_groups->Products_Group->count() != 0)
         {
+			//DK:Póki co sprawdza tylko z kategorii poniżej, zrobić rekurencyjnie by znalazło do najniższej gałęzi
             $groups_array = array();
             $counter = 0;
             foreach($product_groups->Products_Group as $Product_group)

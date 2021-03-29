@@ -32,9 +32,9 @@ class ProductController extends Controller
         return $groups_array;
     }
 
-    function details($group_id, $id)
+    function details($groupname, $id)
     {
-        $products = Products::where('id',$id)->get();
-        return view('products.details');
+        $product = Products::where('id',$id)->first();
+        return view('products.details',['product'=>$product]);
     }
 }

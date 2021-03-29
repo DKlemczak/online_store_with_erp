@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-aaa
+<p>{!!$product->name!!}</p>
+<p>{!!$product->description!!}</p>
 @endsection

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Products_Tags extends Model
 {
     public $timestamps = false;
+    protected $table = 'products_tags';
+
 
     public function Products()
     {

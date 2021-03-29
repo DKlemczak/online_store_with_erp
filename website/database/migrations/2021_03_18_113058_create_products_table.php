@@ -20,8 +20,10 @@ class CreateProductsTable extends Migration
             $table->string('name', 100);
             $table->integer('amount');
             $table->float('price',8,2);
+            $table->longText('description');
             $table->boolean('is_active');
             $table->foreignId('group_id')->constrained('products_group');
+            $table->integer('discount')->unique();
         });
     }
 

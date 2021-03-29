@@ -1,0 +1,45 @@
+/* (min-width: 768px) */
+
+.nav-mobile {
+    display: none;
+}
+
+.nav-desktop {
+    display: block;
+}
+
+.nav-desktop li {
+    list-style: none;
+    display: inline-block;
+}
+
+.nav-desktop li a {
+    padding: 30px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    color: #140910;
+    transition: color .3s;
+}
+
+.nav-desktop li a:hover {
+    color: #f3f3f3;
+}
+
+/*  header */
+
+.header-text h1 {
+    margin-bottom: 10px;
+    font-size: 32px;
+    /* było 36px */
+}
+
+.header-text p {
+    font-size: 18px;
+}
+
+/* main */
+
+section {
+    margin: 120px 0;
+}

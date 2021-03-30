@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Products_Tags extends Model
+class ProductsTags extends Model
 {
     public $timestamps = false;
-    protected $table = 'products_tags';
+    protected $table = 'productstags';
 
 
     public function Products()

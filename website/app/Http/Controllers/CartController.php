@@ -8,10 +8,11 @@ class CartController extends Controller
 {
     function index()
     {
+        return view('cart.index');
     }
 
-    function addtocart()
+    function addtocart(Request $request)
     {
-
+        //Jeśli nie ma otwartej sesji z koszykiem, otworzyć nową, 
     }
 }

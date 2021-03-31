@@ -15,11 +15,18 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->boolean('is_admin');
             $table->string('name');
+            $table->string('surname');
+            $table->string('enova_code')->nullable();
+            $table->string('NIP')->nullable();
+            $table->string('city')->nullable();
+            $table->string('post_code')->nullable();;
+            $table->string('street')->nullable();
+            $table->string('building_number')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('is_admin')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

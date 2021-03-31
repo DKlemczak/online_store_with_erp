@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;400;600&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -39,7 +39,7 @@
                 </a>
 
                 <div class="nav-mobile">
-                    <button> <i class="fas fa-bars"></i> </button> 
+                    <button> <i class="fas fa-bars"></i> </button>
                 </div>
 
                     <ul class="navbar-nav">
@@ -55,6 +55,9 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('cart')}}"><i class="fas fa-shopping-cart"></i></a>
+                            </li>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -95,10 +98,10 @@
             @yield('content')
         </main>
     </div>
-    <footer> 
+    <footer>
       <div class="footer-text"> <ul class="mb-0"> <li> <a href="https://pl.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i> </a></li>
         <li>  <a href="https://www.facebook.com/" target="_blank"> <i class="fab fa-facebook-square"></i> </a> </li>
-        <li> <a href="https://www.instagram.com/" target="_blank"> <i class="fab fa-instagram-square"></i> </a> </li> 
+        <li> <a href="https://www.instagram.com/" target="_blank"> <i class="fab fa-instagram-square"></i> </a> </li>
         <li> <a href="https://twitter.com/?lang=pl/" target="_blank"> <i class="fab fa-twitter-square"></i> </a> </li>
     </ul>
     </div>

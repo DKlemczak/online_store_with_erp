@@ -8,7 +8,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Config\" />
-    <Folder Include="UI\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp.csproj" />

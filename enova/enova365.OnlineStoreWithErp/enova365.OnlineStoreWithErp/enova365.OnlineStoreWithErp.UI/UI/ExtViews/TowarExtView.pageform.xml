@@ -1,0 +1,6 @@
+﻿<?xml version="1.0"?>
+<DataForm xmlns="http://www.enova.pl/schema/form.xsd" RightName="Page:TowarExtViewPage" Priority="18" DataType="Soneta.Towary.Towar,Soneta.Handel">
+  <Page Name="TowarExtViewPage_ePage" CaptionHtml="Edycja cech towaru" DataContext="{new TowarExtView}">
+    <Label CaptionHtml="{Komunikat}" />
+  </Page>
+</DataForm>

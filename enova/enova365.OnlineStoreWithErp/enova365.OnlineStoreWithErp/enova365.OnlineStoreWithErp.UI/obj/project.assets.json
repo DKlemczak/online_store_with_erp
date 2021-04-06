@@ -635,6 +635,20 @@
         "runtime": {
           "lib/net40/_._": {}
         }
+      },
+      "enova365.OnlineStoreWithErp/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.7.2",
+        "dependencies": {
+          "Soneta.Products.Modules": "2012.5.11",
+          "System.ValueTuple": "4.5.0"
+        },
+        "compile": {
+          "bin/placeholder/enova365.OnlineStoreWithErp.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/enova365.OnlineStoreWithErp.dll": {}
+        }
       }
     }
   },
@@ -1774,12 +1788,18 @@
         "zxing.net.0.14.0.1.nupkg.sha512",
         "zxing.net.nuspec"
       ]
+    },
+    "enova365.OnlineStoreWithErp/1.0.0": {
+      "type": "project",
+      "path": "../enova365.OnlineStoreWithErp/enova365.OnlineStoreWithErp.csproj",
+      "msbuildProject": "../enova365.OnlineStoreWithErp/enova365.OnlineStoreWithErp.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.7.2": [
       "Soneta.Products.Modules >= 2012.5.11",
-      "System.ValueTuple >= 4.5.0"
+      "System.ValueTuple >= 4.5.0",
+      "enova365.OnlineStoreWithErp >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1816,7 +1836,11 @@
       "frameworks": {
         "net472": {
           "targetAlias": "net472",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Repos\\OnlineStoreWithErp\\enova\\enova365.OnlineStoreWithErp\\enova365.OnlineStoreWithErp\\enova365.OnlineStoreWithErp\\enova365.OnlineStoreWithErp.csproj": {
+              "projectPath": "C:\\Repos\\OnlineStoreWithErp\\enova\\enova365.OnlineStoreWithErp\\enova365.OnlineStoreWithErp\\enova365.OnlineStoreWithErp\\enova365.OnlineStoreWithErp.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

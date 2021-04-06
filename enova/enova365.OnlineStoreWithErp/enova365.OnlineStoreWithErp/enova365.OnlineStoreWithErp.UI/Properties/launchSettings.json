@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "enova365.OnlineStoreWithErp.UI": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Program Files (x86)\\Soneta\\enova365 2012.5.11.0\\SonetaExplorer.exe"
+    }
+  }
+}

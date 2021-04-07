@@ -1,0 +1,8 @@
+C:\Repos\OnlineStoreWithErp\enova\enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp\bin\Debug\enova365.OnlineStoreWithErp.dll
+C:\Repos\OnlineStoreWithErp\enova\enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp\bin\Debug\enova365.OnlineStoreWithErp.pdb
+C:\Repos\OnlineStoreWithErp\enova\enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp\obj\Debug\enova365.OnlineStoreWithErp.csprojAssemblyReference.cache
+C:\Repos\OnlineStoreWithErp\enova\enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp\obj\Debug\enova365.OnlineStoreWithErp.AssemblyInfoInputs.cache
+C:\Repos\OnlineStoreWithErp\enova\enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp\obj\Debug\enova365.OnlineStoreWithErp.AssemblyInfo.cs
+C:\Repos\OnlineStoreWithErp\enova\enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp\obj\Debug\enova365.OnlineStoreWithErp.csproj.CoreCompileInputs.cache
+C:\Repos\OnlineStoreWithErp\enova\enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp\obj\Debug\enova365.OnlineStoreWithErp.dll
+C:\Repos\OnlineStoreWithErp\enova\enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp\obj\Debug\enova365.OnlineStoreWithErp.pdb

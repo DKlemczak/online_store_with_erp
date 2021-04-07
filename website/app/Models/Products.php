@@ -16,11 +16,11 @@ class Products extends Model
 
     public function Products_Group()
     {
-        return $this->belongsTo(Product_Group::class,'group_id');
+        return $this->belongsTo(Products_Group::class,'group_id');
     }
 
     public function Products_Tags()
     {
-        return $this->belongsToMany(Products_Tags::class, 'product_to_tags');
+        return $this->belongsToMany(ProductsTags::class, 'product_to_tags');
     }
 }

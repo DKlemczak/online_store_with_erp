@@ -10,30 +10,31 @@ class ProductController extends Controller
 {
     function index($id)
     {
-        $product_groups = Products_Group::where('id',$id)->first();
+        $products_group = Products_Group::where('id',$id)->first();
+        $groups_array = array();
+        $groups_array = $this->find_groups($products_group, $groups_array);
 
-        if($product_groups->Products_Group->count() != 0)
-        {
-			//DK:Póki co sprawdza tylko z kategorii poniżej, zrobić rekurencyjnie by znalazło do najniższej gałęzi
-            $groups_array = array();
-            $counter = 0;
-            foreach($product_groups->Products_Group as $Product_group)
-            {
-                $groups_array[$counter] = $Product_group->id;
-                $counter++;
-            }
-            $products = Products::whereIn('group_id',$groups_array)->get();
-        }
-        else
-        {
-            $products = Products::where('group_id',$id)->where('is_active',1)->get();
-        }
+        $products = Products::whereIn('group_id',$groups_array)->where('is_active',1)->get();
+
         return view('products.index',['products'=>$products]);
     }
 
-    function details($group_id, $id)
+    function find_groups($group, $groups_array)
     {
-        $products = Products::where('id',$id)->get();
-        return view('products.details');
+        if($group->Products_Group->count() != 0)
+        {
+            foreach($group->Products_Group as $child_group)
+            {
+                $groups_array = $this->find_groups($child_group, $groups_array);
+            }
+        }
+        $groups_array[$group->id] = $group->id;
+        return $groups_array;
+    }
+
+    function details($groupname, $id)
+    {
+        $product = Products::where('id',$id)->first();
+        return view('products.details',['product'=>$product]);
     }
 }

@@ -1,0 +1,12 @@
+/* (min-width: 992px) */
+
+.header-img {
+    background-image: url('../img/holiday-table-1926946_1920.jpg');
+    background-size: cover;
+}
+
+/* main */
+
+.main-product {
+    width: 49%;
+}

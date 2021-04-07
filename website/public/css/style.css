@@ -1,0 +1,236 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Dosis', sans-serif;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 75%, rgba(194, 192, 192) 95%);
+}
+
+.hero-bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .72);
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* nawigacja */
+
+nav {
+    position: sticky;
+    top: 0;
+    height: 60px;
+    line-height: 60px;
+    background-color: #d8c1d8;
+    text-align: center;
+    overflow: hidden;
+    z-index: 1;
+
+}
+
+.nav-mobile {
+    margin-right: 100%;
+}
+
+.nav-mobile button {
+    padding: 0 30px;
+    line-height: 60px;
+    font-size: 30px;
+    background: none;
+    border: none;
+}
+
+.nav-desktop {
+    display: none;
+}
+
+/* header */
+
+.header-img {
+    position: relative;
+    height: 330px;
+    background-image: url('../img/bookcase-1869616_640.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.header-bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .68);
+}
+
+.header-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    text-shadow: 3px 3px 5px black;
+}
+
+.header-text h1 {
+    margin-bottom: 5px;
+}
+
+.header-text span {
+    text-transform: uppercase;
+    color: rgb(158, 45, 64);
+}
+
+.header-text p {
+    font-family: 'Pacifico', cursive;
+    font-size: 16px;
+}
+
+/* main */
+
+section {
+    margin: 80px 0;
+}
+
+main h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.underline {
+    position: relative;
+}
+
+.line {
+    position: absolute;
+    left: calc(50% - 30px);
+    bottom: -5px;
+    width: 60px;
+    height: 3px;
+    background-color: #d8c1d8;
+}
+
+.products {
+    font-size: 1;
+}
+
+.about-us p {
+    padding: 20px;
+}
+
+.main-product {
+    position: relative;
+    height: 260px;
+    width: 100%;
+    display: inline-block;
+    background-size: cover;
+    background-position: center;
+}
+
+.main-product:hover .product-text h4 {
+    transform: scale(1.2);
+}
+
+.first-product {
+    background-image: url('../img/glass-of-beer-3444480_1920.jpg');
+}
+
+.second-product {
+    background-image: url('../img/coffee-4618705_1920.jpg');
+}
+
+.third-product {
+    background-image: url('../img/glass-1206584_1920.jpg');
+}
+
+.fourth-product {
+    background-image: url('../img/coffee-2605691_1920.jpg');
+}
+
+.product-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    /* text-shadow: 1px 1px 3px black; */
+    font-size: 27px;
+    text-transform: uppercase;
+}
+
+.product-text h4 {
+    transition: transform .3s;
+}
+
+.contact {
+    text-align: center;
+}
+
+.contact h3 {
+    margin: 20px 0 5px;
+    text-transform: uppercase;
+}
+
+.contact i {
+    font-size: 20px;
+    margin-right: 10px;
+    line-height: 160%;
+}
+
+.contact p {
+    font-size: 18px;
+}
+
+/* footer */
+
+footer {
+    height: 40px;
+    line-height: 40px; 
+    font-size: 30px;
+    word-spacing: 20px;
+    text-align: center; 
+    border-top: 2px solid rgb(73, 73, 73);
+    background-color: rgb(194, 192, 192);
+}
+
+.footer-text li {
+    list-style: none;
+    display: inline-block;
+}
+
+.footer-text li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(158, 45, 64);
+}
+
+@media (min-width: 400px) {
+
+    .header-text h1 {
+        font-size: 46px;
+    }
+
+    .header-text p {
+        font-size: 20px;
+    }
+
+    .product-text h3 {
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+
+    .product-text {
+        font-size: 19px;
+    }
+}

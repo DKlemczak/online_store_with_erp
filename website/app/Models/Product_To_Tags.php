@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product_To_Tags extends Model
 {
     public $timestamps = false;
+    protected $table = 'product_to_tags';
 
     public function Products()
     {
@@ -15,6 +16,6 @@ class Product_To_Tags extends Model
 
     public function Products_Tags()
     {
-        return $this->belongsTo(Products_Tags::class, 'tag_id','id');
+        return $this->belongsTo(ProductsTags::class, 'products_tags_id', 'id');
     }
 }

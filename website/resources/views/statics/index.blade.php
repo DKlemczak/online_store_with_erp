@@ -5,8 +5,7 @@
         <div class="header-img">
         <div class="header-text"> 
             <h1> funky  <span> szklanki </span></h1>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, sed voluptatem voluptatibus labore dolorem nemo tenetur ratione.
-             </p>
+            <p> <p> Szklanka może być do połowy pusta lub do połowy pełna. Jednak najlepszy wybór to szklanka ze sklepu <strong> funky szklanki. </strong></p>
         </div>
         <div id="about-us" class="header-bg"> </div>
     </div>
@@ -17,19 +16,17 @@
             <h2> nowości </h2>
             <div class="line"></div>
             </div>
+            <div> <p> W trakcie... </p> </div>
         </section>
 
         <section id="products" class="products">
                 <div class="underline"> 
-                    <h2> informacje </h2> 
+                    <h2> Co nas wyróżnia </h2> 
                     <div class="line"></div>
                 </div> 
-            <div class="main-product first-product"> 
+                <div class="main-product first-product"> 
                 <div class="product-text"> 
-                    <h4> <strong> tekst </strong>
-                        
-                    </h4>
-                    
+                    <h4>  W naszej ofercie znajdują się: <strong> szklanki, kubki </strong> oraz <strong> kieliszki </strong> </h4>
                 </div>
                 <div class="hero-bg"> </div>
                 </div>
@@ -37,14 +34,14 @@
                 <div class="main-product second-product"> 
                     <div class="product-text"> 
                    
-                   <h4> <strong> tekst </strong></h4>
+                   <h4> Polska firma, Polskie produkty </h4>
                 </div>
                     <div class="hero-bg"> </div>
                 </div>
 
                 <div class="main-product third-product"> 
                     <div class="product-text"> 
-                    <h4> tekst  </h4>
+                    <h4> Dbamy o każdy szczegół  </h4>
 
                 </div>
                     <div class="hero-bg"> </div>
@@ -52,25 +49,10 @@
 
                 <div class="main-product fourth-product"> 
                     <div class="product-text"> 
-                    <h4> tekst </h4>
-                    
+                    <h4> Wysyłka zamówienia w 48h </h4> 
                 </div>
                     <div class="hero-bg"> </div>
                 </div>
-        </section>
-
-        <section id="contact">
-        <div class="underline">
-        <h2> Kontakt </h2>
-        <div class="line"></div>
-        </div>
-        <div class="contact"> 
-            <p> <i class="fas fa-phone"></i> +48 123 058 784 </p>
-            <p> <i class="fas fa-at"></i> sklep@xx.pl </p>
-            <h3> Adres </h3>
-            <p> ul. Przykładowa 12, </p>
-            <p> 00-111 Poznań </p>
-        </div>  
         </section>
     </main>
 @endsection

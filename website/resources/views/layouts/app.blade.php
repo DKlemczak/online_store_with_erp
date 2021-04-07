@@ -99,10 +99,9 @@
         </main>
     </div>
     <footer>
-      <div class="footer-text"> <ul class="mb-0"> <li> <a href="https://pl.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i> </a></li>
+      <div class="footer-text"> <ul class="mb-0"> 
         <li>  <a href="https://www.facebook.com/" target="_blank"> <i class="fab fa-facebook-square"></i> </a> </li>
         <li> <a href="https://www.instagram.com/" target="_blank"> <i class="fab fa-instagram-square"></i> </a> </li>
-        <li> <a href="https://twitter.com/?lang=pl/" target="_blank"> <i class="fab fa-twitter-square"></i> </a> </li>
     </ul>
     </div>
     </footer>

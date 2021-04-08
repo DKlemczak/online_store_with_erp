@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->longText('description');
             $table->boolean('is_active');
             $table->foreignId('group_id')->constrained('products_group');
-            $table->integer('discount')->unique();
+            $table->integer('discount');
         });
     }
 

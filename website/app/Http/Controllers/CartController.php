@@ -92,6 +92,6 @@ class CartController extends Controller
     public function destroytheCart()
     {
         session()->forget('cart');
-        return view('index');
+        return view('statics.index');
     }
 }

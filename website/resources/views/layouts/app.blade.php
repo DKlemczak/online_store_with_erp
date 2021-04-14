@@ -55,9 +55,11 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        @if(session('cart'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('cart')}}"><i class="fas fa-shopping-cart"></i></a>
+                                <a class="nav-link" href="{{route('cart')}}"><i class="fas fa-shopping-cart"></i> {{count(Session::get('cart'))}}</a>
                             </li>
+                        @endif
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -99,7 +101,7 @@
         </main>
     </div>
     <footer>
-      <div class="footer-text"> <ul class="mb-0"> 
+      <div class="footer-text"> <ul class="mb-0">
         <li>  <a href="https://www.facebook.com/" target="_blank"> <i class="fab fa-facebook-square"></i> </a> </li>
         <li> <a href="https://www.instagram.com/" target="_blank"> <i class="fab fa-instagram-square"></i> </a> </li>
     </ul>

@@ -11,6 +11,7 @@
 @foreach($product->Products_tags as $tag)
 <p>{!!$tag->name!!}</p>
 @endforeach
+@if($product->amount>0)
 <form method="POST" enctype="multipart/form-data" action="{{ route('cart.addtocart') }}" accept-charset="UTF-8">
     @csrf
     <div class="form-group">
@@ -19,4 +20,7 @@
         <button type="submit">Dodaj do koszyka</button>
     </div>
 </form>
+@else
+    <p>Brak produktu na stanie</p>
+@endif
 @endsection

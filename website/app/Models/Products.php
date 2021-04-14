@@ -23,4 +23,9 @@ class Products extends Model
     {
         return $this->belongsToMany(ProductsTags::class, 'product_to_tags');
     }
+
+    public function Positions()
+    {
+        return $this->hasMany(Product::class, 'product_id','id');
+    }
 }

@@ -15,6 +15,8 @@ class CreateOrderPositionsTable extends Migration
     {
         Schema::create('order_positions', function (Blueprint $table) {
             $table->id();
+            $table->integer('amount');
+            $table->float('price',8,2);
             $table->foreignId('product_id')->constrained('products');
             $table->foreignId('order_id')->constrained('order');
 

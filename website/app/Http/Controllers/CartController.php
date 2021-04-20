@@ -19,7 +19,6 @@ class CartController extends Controller
         {
             $value += $product['price'];
         }
-
         return view('cart.index',['cart' => $cart,'value' => $value]);
     }
 

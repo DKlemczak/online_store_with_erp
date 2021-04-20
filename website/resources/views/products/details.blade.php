@@ -8,9 +8,11 @@
 @else
 <p>{!!$product->price!!}</p>
 @endif
+<p>Tagi: 
 @foreach($product->Products_tags as $tag)
-<p>{!!$tag->name!!}</p>
+{!!$tag->name!!},
 @endforeach
+</p>
 @if($product->amount>0)
 <form method="POST" enctype="multipart/form-data" action="{{ route('cart.addtocart') }}" accept-charset="UTF-8">
     @csrf

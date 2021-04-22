@@ -5,15 +5,16 @@ VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BD4A4EE1-F6F5-4152-87B3-DF76E385EAF9}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		Directory.Build.props = Directory.Build.props
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "enova365.OnlineStoreWithErp", "enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp.csproj", "{5E6DECDC-1788-4E1F-858F-F4A2342FDD06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "enova365.OnlineStoreWithErp", "enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp.csproj", "{5E6DECDC-1788-4E1F-858F-F4A2342FDD06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "enova365.OnlineStoreWithErp.UI", "enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp.UI\enova365.OnlineStoreWithErp.UI.csproj", "{18B58C66-A6CB-4461-BE23-8793C48E668D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "enova365.OnlineStoreWithErp.UI", "enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp.UI\enova365.OnlineStoreWithErp.UI.csproj", "{18B58C66-A6CB-4461-BE23-8793C48E668D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "enova365.OnlineStoreWithErp.Tests", "enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp.Tests\enova365.OnlineStoreWithErp.Tests.csproj", "{0CB2AD0A-8B7E-4EAD-89BB-F9B733055BC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "enova365.OnlineStoreWithErp.Tests", "enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp.Tests\enova365.OnlineStoreWithErp.Tests.csproj", "{0CB2AD0A-8B7E-4EAD-89BB-F9B733055BC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

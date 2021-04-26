@@ -8,6 +8,7 @@ use StaticController;
 use App\Models\Products;
 use App\Models\Order;
 use App\Models\Order_Positions;
+use App\Models\User;
 
 class CartController extends Controller
 {
@@ -92,5 +93,17 @@ class CartController extends Controller
     {
         session()->forget('cart');
         return view('statics.index');
+    }
+
+    public function createorder()
+    {
+        $cart = session()->pull('cart', []);
+        $user = auth::user();
+        if($user == null)
+        {
+            $user = User::where('enova_code','!INCYDENTALNY')->$first();
+        }
+        $order = new Order();
+        $order->document_number = "zam/"+ $order->id;
     }
 }

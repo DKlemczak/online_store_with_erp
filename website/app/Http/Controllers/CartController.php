@@ -73,7 +73,7 @@ class CartController extends Controller
         if(empty($cart))
         {
             CartController::destroytheCart();
-            return view('statics.index');
+            return redirect('/');
         }
 
         session()->put('cart', $cart);
@@ -92,7 +92,6 @@ class CartController extends Controller
     public function destroytheCart()
     {
         session()->forget('cart');
-        return view('statics.index');
     }
 
     public function createorder()

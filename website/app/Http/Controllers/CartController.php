@@ -8,6 +8,8 @@ use StaticController;
 use App\Models\Products;
 use App\Models\Order;
 use App\Models\Order_Positions;
+use App\Models\Payment_Type;
+use App\Models\Transport_Type;
 use App\Models\User;
 
 class CartController extends Controller
@@ -16,11 +18,13 @@ class CartController extends Controller
     {
         $cart = session()->get('cart');
         $value = 0;
+        $Payment_Type = Payment_Type::get();
+        $Transport_Type = Transport_Type::get();
         foreach($cart as $product)
         {
             $value += $product['price'];
         }
-        return view('cart.index',['cart' => $cart,'value' => $value]);
+        return view('cart.index',['cart' => $cart,'value' => $value, 'payments' => $Payment_Type, 'transports' => $Transport_Type]);
     }
 
     function addtocart(Request $request)
@@ -93,16 +97,64 @@ class CartController extends Controller
     {
         session()->forget('cart');
     }
+    public function summary(Request $request)
+    {
+        $cart = session()->get('cart');
+        $value = 0;
 
-    public function createorder()
+        foreach($cart as $product)
+        {
+            $value += $product['price'];
+        }
+        $transport = Transport_Type::Where('id',$request->transport)->first();
+        $payment = Payment_Type::Where('id',$request->payment)->first();
+        $ordernumber = Order::orderby('id','desc')->first();
+
+        if($ordernumber == null)
+        {
+            $number = 1;
+        }
+        else
+        {
+            $number = $ordernumber->id + 1;
+        }
+
+        $value = $value + $payment->price + $transport->price;
+
+        $order = new Order();
+        $order->user_name = $request->name;
+        $order->user_surname = $request->surname;
+        $order->document_number = "zam/".$number;
+        $order->city = $request->city;
+        $order->post_code = $request->post_code;
+        $order->street = $request->street;
+        $order->building_number = $request->building_number;
+        $order->email = $request->email;
+        $order->phone_number = $request->phone_number;
+        $order->value = $value;
+        $order->transport_id = $transport->id;
+        $order->payment_id = $payment->id;
+        if(auth::user() != null)
+        {
+            $order->user = auth::user()->id;
+        }
+        $order->status = 0;
+        return view("cart.summary",['cart' => $cart, 'order' => $order, 'transport'=> $transport, 'payment' => $payment]);
+    }
+
+    public function createorder($order)
     {
         $cart = session()->pull('cart', []);
-        $user = auth::user();
-        if($user == null)
+        $order->save();
+        foreach($cart as $product)
         {
-            $user = User::where('enova_code','!INCYDENTALNY')->$first();
+            $position = new Order_Positions();
+            $position->amount = $product['amount'];
+            $position->price = $product['price'];
+            $position->product_id = $product['id'];
+            $position->order_id = $order->id;
+            $position->save();
         }
-        $order = new Order();
-        $order->document_number = "zam/"+ $order->id;
+        return redirect('/');
     }
 }

@@ -15,16 +15,19 @@ class CreateOrderTable extends Migration
     {
         Schema::create('order', function (Blueprint $table) {
             $table->id();
+            $table->string('user_name');
+            $table->string('user_surname');
             $table->string('document_number')->unique();
-            $table->string('city')->nullable();
-            $table->string('post_code')->nullable();
-            $table->string('street')->nullable();
-            $table->string('building_number')->nullable();
+            $table->string('city');
+            $table->string('post_code');
+            $table->string('street');
+            $table->string('building_number');
             $table->string('email')->nullable();
+            $table->string('phone_number')->nullable();
             $table->float('value',8,2)->nullable();
             $table->foreignId('transport_id')->constrained('transport_type');
             $table->foreignId('payment_id')->constrained('payment_type');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->nullable();
             $table->integer('status');
         });
     }

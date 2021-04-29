@@ -15,6 +15,7 @@
             <div class="underline">
             <h2> aktualne promocje </h2>
             <div class="line"></div>
+            </div>
             <div>
                 @foreach($products as $product)
                     <a href="{{ route('products.details', [$product->Products_Group->name,$product->id]) }}"><span>{!!$product->name!!}</span></a>

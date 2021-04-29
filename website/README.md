@@ -1,4 +1,4 @@
-<p align="center"><img src="\..\website\public\img\logo.png" width="200"></a></p>
+<p align="center"><img src="public\img\logo.png" width="200"></a></p>
 
 <h3> O projekcie: </h3>
 <hr>

@@ -54,11 +54,11 @@
                 </div>
                 <div class="row">
                     <div class="col-6">
-                        <label for="e-mail" class="col-form-label">E-mail:</label>
-                        <input id="e-mail" type="email" class="form-control" name="e-mail" required>
-                        @if ($errors->has('e-mail'))
+                        <label for="email" class="col-form-label">E-mail:</label>
+                        <input id="email" type="email" class="form-control" name="email" required>
+                        @if ($errors->has('email'))
                         <span class="help-block">
-                            <strong>{{ $errors->first('e-mail') }}</strong>
+                            <strong>{{ $errors->first('email') }}</strong>
                         </span>
                         @endif
                     </div>

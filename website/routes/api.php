@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('ApiToken')->group(function ()
+{
+    Route::get('/orders', 'App\Http\Controllers\Api\OrdersController@index');
 });

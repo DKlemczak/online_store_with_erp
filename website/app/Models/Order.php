@@ -11,7 +11,7 @@ class Order extends Model
 
     public function Positions()
     {
-        return $this->hasMany(Order::class, 'order_id','id');
+        return $this->hasMany(Order_Positions::class);
     }
 
     public function Payment()

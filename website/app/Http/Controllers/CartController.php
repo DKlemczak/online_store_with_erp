@@ -22,7 +22,7 @@ class CartController extends Controller
         $Transport_Type = Transport_Type::get();
         foreach($cart as $product)
         {
-            $value += $product['price'];
+            $value += $product['price'] * $product['amount'];
         }
         return view('cart.index',['cart' => $cart,'value' => $value, 'payments' => $Payment_Type, 'transports' => $Transport_Type]);
     }
@@ -45,25 +45,27 @@ class CartController extends Controller
         }
         else
         {
+            $key = 0;
             foreach($cart as $cartprod)
             {
                 if($cartprod['id'] == $product->id)
                 {
                     $cartprod['amount'] = $cartprod['amount'] + $request->amount;
-                    $cart[$product->id] = $cartprod;
+                    $cart[$key] = $cartprod;
 
                     session()->put('cart', $cart);
                     return redirect()->back();
                 }
+                $key++;
             }
 
-            $cart[$product->id] =
+           /* $cart[$product->id] =
             [
                 'id' => $product->id,
                 'name' => $product->name,
                 'amount' => $request->amount,
                 'price' => $product->price - $product->price * ($product->discount * 0.01)
-            ];
+            ];*/
         }
         session()->put('cart', $cart);
         return redirect()->back();
@@ -82,15 +84,7 @@ class CartController extends Controller
 
         session()->put('cart', $cart);
 
-        $cart = session('cart');
-
-        $value = 0;
-        foreach($cart as $product)
-        {
-            $value += $product['price'];
-        }
-
-        return view("cart.index",['cart' => $cart, 'value' => $value]);
+        return redirect('/cart');
     }
 
     public function destroytheCart()
@@ -100,11 +94,12 @@ class CartController extends Controller
     public function summary(Request $request)
     {
         $cart = session()->get('cart');
+
         $value = 0;
 
         foreach($cart as $product)
         {
-            $value += $product['price'];
+            $value += $product['price'] * $product['amount'];
         }
         $transport = Transport_Type::Where('id',$request->transport)->first();
         $payment = Payment_Type::Where('id',$request->payment)->first();
@@ -139,12 +134,14 @@ class CartController extends Controller
             $order->user = auth::user()->id;
         }
         $order->status = 0;
+        session()->put('order', $order);
         return view("cart.summary",['cart' => $cart, 'order' => $order, 'transport'=> $transport, 'payment' => $payment]);
     }
 
-    public function createorder($order)
+    public function createorder()
     {
-        $cart = session()->pull('cart', []);
+        $cart = session()->get('cart');
+        $order = session()->get('order');
         $order->save();
         foreach($cart as $product)
         {
@@ -154,7 +151,13 @@ class CartController extends Controller
             $position->product_id = $product['id'];
             $position->order_id = $order->id;
             $position->save();
+
+            $DBProduct = Products::where('id',$product['id'])->first();
+            $DBProduct->amount = $DBProduct->amount - $product['amount'];
+            $DBProduct->save();
         }
+        session()->forget('cart');
+        session()->forget('order');
         return redirect('/');
     }
 }

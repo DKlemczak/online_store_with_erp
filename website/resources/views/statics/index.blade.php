@@ -13,15 +13,15 @@
     <main class="wrapper">
         <section class="about-us">
             <div class="underline">
-            <h2> nowości </h2>
+            <h2> aktualne promocje </h2>
             <div class="line"></div>
             </div>
-            <div> <p> W trakcie... </p> </div>
+            <div class="text-center"> <p> W trakcie... </p> </div>
         </section>
 
         <section id="products" class="products">
                 <div class="underline"> 
-                    <h2> Co nas wyróżnia </h2> 
+                    <h2 > Co nas wyróżnia </h2> 
                     <div class="line"></div>
                 </div> 
                 <div class="main-product first-product"> 

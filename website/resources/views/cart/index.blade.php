@@ -114,7 +114,7 @@
                 </div>
             </div>
         </div>
-        <button type="submit">Podsumowanie</button>
+        <button type="submit" class="button"> Podsumowanie </button>
     </div>
 </form>
 @endsection

@@ -1,0 +1,45 @@
+﻿using enova365.OnlineStoreWithErp.Config;
+using enova365.OnlineStoreWithErp.Models.CommitSessionModels;
+using Soneta.Business;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace enova365.OnlineStoreWithErp.Models.CustomViewInfos
+{
+    public class GrupaList : List<Grupa> { }
+
+    public class GrupaViewInfo : CustomViewInfo<Grupa, GrupaList>
+    {
+        public GrupaViewInfo() : base("Grupa") { }
+
+        protected override void AddNewAction(GrupaList list, ActionEventArgs args)
+        {
+            Grupa newGrupa = new Grupa(args.Context.Session);
+            list.Add(newGrupa);
+            args.FocusedData = newGrupa;
+        }
+
+        protected override GrupaList NewList(Session sess)
+        {
+            GrupaList result = new GrupaList();
+            List<Grupa> list = new EnovaConfig(sess).Grupy;
+            list.ForEach(grupa => result.Add(grupa));
+            return result;
+        }
+
+        protected override void Zapisz(Session sess, GrupaList list)
+            => Zapisz(sess, list.ToList());
+
+        public static void Zapisz(Session sess, List<Grupa> list)
+            => new EnovaConfig(sess).Grupy = list;
+
+        public static void Zapisz(Context cx)
+        {
+            GrupaViewInfo grupaViewInfo = new GrupaViewInfo();
+            Zapisz(cx.Session, grupaViewInfo.GetListFromCx(cx));
+        }
+
+        public static List<Grupa> GetList(Session session)
+            => new GrupaViewInfo().NewList(session).ToList();
+    }
+}

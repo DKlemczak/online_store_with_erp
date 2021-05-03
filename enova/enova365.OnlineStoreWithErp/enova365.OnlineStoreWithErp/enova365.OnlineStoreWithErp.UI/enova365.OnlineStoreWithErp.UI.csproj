@@ -7,9 +7,6 @@
     <OutputPath>C:\Program Files\Common Files\Soneta\Assemblies\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Config\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\enova365.OnlineStoreWithErp\enova365.OnlineStoreWithErp.csproj" />
   </ItemGroup>
 </Project>

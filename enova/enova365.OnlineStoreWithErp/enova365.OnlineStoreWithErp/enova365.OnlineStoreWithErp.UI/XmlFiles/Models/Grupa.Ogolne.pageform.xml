@@ -1,0 +1,7 @@
+﻿<DataForm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Priority="1" xmlns="http://www.enova.pl/schema/form.xsd">
+  <Page Name="GrupaPage" CaptionHtml="Ogólne" DataContext="{DataSource}" Width="100" Height="10">
+    <Field CaptionHtml="Nazwa" EditValue="{Nazwa}" />
+    <Field CaptionHtml="W menu" EditValue="{WMenu}" />
+    <Field CaptionHtml="Grupa nadrzędna" EditValue="{ParentNazwaGrupy}" />
+  </Page>
+</DataForm>

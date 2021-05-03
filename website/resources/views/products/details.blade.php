@@ -19,7 +19,7 @@
     <div class="form-group">
         <p>Ilość<input class="form-control" type="number" name="amount" value="1" min="1" max="{!!$product->amount!!}"></p>
         <input class="form-control" type="hidden" name="product_id" value="{!!$product->id!!}">
-        <button type="submit">Dodaj do koszyka</button>
+        <button type="submit" class="button">Dodaj do koszyka</button>
     </div>
 </form>
 @else

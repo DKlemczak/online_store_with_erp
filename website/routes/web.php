@@ -20,4 +20,6 @@ Route::get('/products/{name}/product-{id}','App\Http\Controllers\ProductControll
 Route::post('/addtocart','App\Http\Controllers\CartController@addtocart')->name('cart.addtocart');
 Route::get('/cart','App\Http\Controllers\CartController@index')->name('cart');
 Route::get('/cart/removefromcart/{id}','App\Http\Controllers\CartController@removefromcart')->name('cart.remove');
+Route::post('/cart/summary','App\Http\Controllers\CartController@summary')->name('cart.summary');
+Route::get('/cart/createorder','App\Http\Controllers\CartController@createorder')->name('cart.createorder');
 Auth::routes();

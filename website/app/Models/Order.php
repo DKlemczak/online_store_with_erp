@@ -11,6 +11,16 @@ class Order extends Model
 
     public function Positions()
     {
-        return $this->belongsTo(Order::class, 'order_id');
+        return $this->hasMany(Order_Positions::class);
+    }
+
+    public function Payment()
+    {
+        return $this->hasOne(Payment_Type::class);
+    }
+
+    public function Transport()
+    {
+        return $this->hasOne(Transport_Type::class);
     }
 }

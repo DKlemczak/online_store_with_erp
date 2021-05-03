@@ -16,11 +16,13 @@ namespace enova365.OnlineStoreWithErp.Models.CommitSessionModels
             WMenu = grupa.WMenu;
             Nazwa = grupa.Nazwa;
             ParentNazwaGrupy = grupa.ParentNazwaGrupy;
+            OrderValue = grupa.OrderValue;
         }
 
         public string Nazwa { get; set; }
         public bool WMenu { get; set; }
         public string ParentNazwaGrupy { get; set; }
+        public int OrderValue { get; set; }
     }
 
     public class Grupa : CommitSession
@@ -34,6 +36,7 @@ namespace enova365.OnlineStoreWithErp.Models.CommitSessionModels
             _Nazwa = jsonGrupa.Nazwa;
             _WMenu = jsonGrupa.WMenu;
             _ParentNazwaGrupy = jsonGrupa.ParentNazwaGrupy;
+            OrderValue = jsonGrupa.OrderValue;
         }
 
         #endregion Constructors
@@ -55,13 +58,12 @@ namespace enova365.OnlineStoreWithErp.Models.CommitSessionModels
                     throw new Exception($"Istnieje już grupa o nazwie: {value}");
 
                 _Nazwa = value;
-                //SetOrderValue();
                 RefreshSession();
             }
         }
 
         public bool WMenu { get => _WMenu; set { _WMenu = value; RefreshSession(); } }
-        public string ParentNazwaGrupy { get => _ParentNazwaGrupy; set { _ParentNazwaGrupy = value; /*SetOrderValue();*/ RefreshSession(); } }
+        public string ParentNazwaGrupy { get => _ParentNazwaGrupy; set { _ParentNazwaGrupy = value; RefreshSession(); } }
 
         public string[] GetListParentNazwaGrupy() => GrupaViewInfo.GetList(Session)
             .Where(g => g.Nazwa != Nazwa && g.ParentNazwaGrupy != Nazwa)
@@ -106,47 +108,36 @@ namespace enova365.OnlineStoreWithErp.Models.CommitSessionModels
             }
         }
 
-        public double OrderValue { get; set; }
+        public int OrderValue { get; set; }
 
         #endregion Fields
 
         #region Methods
 
-        //private void SetOrderValue()
-        //{
-        //    List<Grupa> grupaList = GrupaViewInfo.GetList(Session);
-
-        //    foreach (Grupa grupa in grupaList)
-        //    {
-        //        grupa._Nazwa += "Ti";
-        //    }
-
-        //    GrupaViewInfo.Zapisz(Session, grupaList);
-
-        //    //List<Grupa> sortedGrupaList = new List<Grupa>();
-
-        //    //foreach (Grupa grupa in GrupaViewInfo.GetList(Session).OrderBy(g => g.ParentLevel))
-        //    //{
-        //    //    if (sortedGrupaList.FirstOrDefault(g => g.Nazwa == grupa.Nazwa) != null)
-        //    //        sortedGrupaList.InsertRange(sortedGrupaList.IndexOf(grupa) + 1, grupa.Childs);
-        //    //    else
-        //    //    {
-        //    //        sortedGrupaList.Add(grupa);
-        //    //        sortedGrupaList.AddRange(grupa.Childs);
-        //    //    }
-        //    //}
-
-        //    //int counter = 0;
-        //    //foreach (Grupa grupa in sortedGrupaList)
-        //    //    grupa.OrderValue = ++counter;
-
-        //    //GrupaViewInfo.Zapisz(Session, sortedGrupaList);
-        //}
-
         public override object OnCommitting(Context cx)
         {
             if (Nazwa.IsNullOrEmpty())
                 throw new Exception("Pole 'Nazwa' nie może byc puste");
+
+            List<Grupa> grupaList = GrupaViewInfo.GetListCx(cx);
+            List<Grupa> sortedGrupaList = new List<Grupa>();
+
+            foreach (Grupa grupa in grupaList.OrderBy(g => g.ParentLevel))
+            {
+                if (sortedGrupaList.FirstOrDefault(g => g.Nazwa == grupa.Nazwa) != null)
+                    sortedGrupaList.InsertRange(sortedGrupaList.IndexOf(grupa) + 1, grupa.Childs);
+                else
+                {
+                    sortedGrupaList.Add(grupa);
+                    sortedGrupaList.AddRange(grupa.Childs);
+                }
+            }
+
+            foreach (Grupa grupa in grupaList)
+            {
+                grupa.OrderValue = sortedGrupaList.IndexOf(sortedGrupaList.FirstOrDefault(g => g.Nazwa == grupa.Nazwa));
+                grupa.RefreshSession();
+            }
 
             GrupaViewInfo.Zapisz(cx);
             return base.OnCommitting(cx);

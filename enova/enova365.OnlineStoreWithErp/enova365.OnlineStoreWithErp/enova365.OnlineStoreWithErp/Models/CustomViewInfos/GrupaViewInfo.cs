@@ -24,6 +24,7 @@ namespace enova365.OnlineStoreWithErp.Models.CustomViewInfos
             GrupaList result = new GrupaList();
             List<Grupa> list = new EnovaConfig(sess).Grupy;
             list.ForEach(grupa => result.Add(grupa));
+
             return result;
         }
 
@@ -41,5 +42,16 @@ namespace enova365.OnlineStoreWithErp.Models.CustomViewInfos
 
         public static List<Grupa> GetList(Session session)
             => new GrupaViewInfo().NewList(session).ToList();
+
+        public static List<Grupa> GetListCx(Context cx)
+            => new GrupaViewInfo().GetListFromCx(cx).ToList();
+
+        public static void UpdateContext(Context cx, List<Grupa> list)
+        {
+            GrupaList resultList = new GrupaList();
+            list.ForEach(g => resultList.Add(g));
+
+            cx.Set(resultList);
+        }
     }
 }

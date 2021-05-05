@@ -8,6 +8,10 @@ namespace enova365.OnlineStoreWithErp.Utils
         public static class Towary
         {
             public const string IsActive = "IsActive";
+            public const string GrupaId = "GrupaId";
+            public const string Opis = "Opis";
+            public const string Grupa = "Grupa";
+            public const string DictionaryGrupa = "F.Grupa";
         }
     }
 
@@ -30,6 +34,24 @@ namespace enova365.OnlineStoreWithErp.Utils
 
         public static void SetIsActive(this Towar towar, bool value)
             => towar.SetFeatureValue(FeatureName.Towary.IsActive, value);
+
+        public static int GetGrupaId(this Towar towar)
+            => towar.GetFeatureValue<int>(FeatureName.Towary.GrupaId);
+
+        public static void SetGrupaId(this Towar towar, int value)
+            => towar.SetFeatureValue(FeatureName.Towary.GrupaId, value);
+
+        public static string GetOpis(this Towar towar)
+            => towar.GetFeatureValue<string>(FeatureName.Towary.Opis);
+
+        public static void SetOpis(this Towar towar, string value)
+            => towar.SetFeatureValue(FeatureName.Towary.Opis, value);
+
+        public static string GetGrupa(this Towar towar)
+            => towar.GetFeatureValue<string>(FeatureName.Towary.Grupa);
+
+        public static void SetGrupa(this Towar towar, string value)
+            => towar.SetFeatureValue(FeatureName.Towary.Grupa, value);
 
         #endregion Towary
     }

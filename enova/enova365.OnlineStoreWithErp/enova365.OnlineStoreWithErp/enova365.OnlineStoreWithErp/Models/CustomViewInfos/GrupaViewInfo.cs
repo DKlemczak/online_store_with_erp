@@ -14,7 +14,13 @@ namespace enova365.OnlineStoreWithErp.Models.CustomViewInfos
 
         protected override void AddNewAction(GrupaList list, ActionEventArgs args)
         {
-            Grupa newGrupa = new Grupa(args.Context.Session);
+            int newId = 1;
+
+            foreach (Grupa grupa in list)
+                if (grupa.Id >= newId)
+                    newId = grupa.Id + 1;
+
+            Grupa newGrupa = new Grupa(args.Context.Session, newId);
             list.Add(newGrupa);
             args.FocusedData = newGrupa;
         }

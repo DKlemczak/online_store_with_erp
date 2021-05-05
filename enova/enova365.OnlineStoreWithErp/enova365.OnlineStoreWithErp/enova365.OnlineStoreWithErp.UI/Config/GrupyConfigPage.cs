@@ -13,5 +13,7 @@ namespace enova365.OnlineStoreWithErp.UI.Config
         private EnovaConfig EnovaConfig { get; }
 
         public ViewInfo Grupy => EnovaConfig.CreateGrupyViewInfo();
+
+        public void UpdateDictionaryItems() => EnovaConfig.UpdateDictionaryItems();
     }
 }

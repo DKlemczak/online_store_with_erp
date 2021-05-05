@@ -5,6 +5,9 @@
     <Grid Width="*" Height="10" EditValue="{Grupy}" OrderBy="OrderValue" IsToolbarVisible="true" NewButton="Visible" EditButton="Visible" RemoveButton="Visible">
       <Field CaptionHtml="Nazwa" EditValue="{NazwaOnGrid}" Width="20" />
       <Field CaptionHtml="Order" EditValue="{OrderValue}" Width="20" />
+      <Field CaptionHtml="Rodzic" EditValue="{ParentId}" Width="20" />
     </Grid>
+
+    <Command CaptionHtml="Aktualizuj słownik" MethodName="UpdateDictionaryItems" />
   </Page>
 </DataForm>

@@ -1,5 +1,5 @@
 ﻿using enova365.OnlineStoreWithErp.UI.WorkersUI;
-using enova365.OnlineStoreWithErp.Workers;
+using enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia;
 using Soneta.Business;
 using Soneta.Handel;
 using System;

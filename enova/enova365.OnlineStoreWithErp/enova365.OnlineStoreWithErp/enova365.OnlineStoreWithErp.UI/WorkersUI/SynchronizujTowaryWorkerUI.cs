@@ -1,5 +1,5 @@
 ﻿using enova365.OnlineStoreWithErp.UI.WorkersUI;
-using enova365.OnlineStoreWithErp.Workers;
+using enova365.OnlineStoreWithErp.Workers.SynchronizujTowary;
 using Soneta.Business;
 using Soneta.Towary;
 using System;
@@ -22,6 +22,6 @@ namespace enova365.OnlineStoreWithErp.UI.WorkersUI
             Icon = ActionIcon.Wizard,
             Priority = 11)]
         public object SynchronizujTowaryUIMethod()
-            => SynchronizujTowaryWorker.SynchronizujTowaryMethod(Towary);
+            => SynchronizujTowaryWorker.SynchronizujTowaryMethod(Context, Towary);
     }
 }

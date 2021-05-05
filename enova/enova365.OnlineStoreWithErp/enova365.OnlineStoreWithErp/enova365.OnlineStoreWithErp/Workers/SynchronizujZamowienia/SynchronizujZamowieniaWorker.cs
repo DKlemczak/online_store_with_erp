@@ -1,7 +1,7 @@
 ﻿using Soneta.Handel;
 using System;
 
-namespace enova365.OnlineStoreWithErp.Workers
+namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
 {
     public class SynchronizujZamowieniaWorker
     {

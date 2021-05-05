@@ -11,7 +11,10 @@
     <div>
         <div class="row mx-0">
             <div class="col-6">
-                <h2>Sposób płatności</h2>
+            <div class="underline">
+                    <h2> Sposób płatności </h2>
+                    <div class="line"></div>
+            </div>
                 <select id="payment" name="payment">
                     @foreach($payments as $payment)
                         <option value="{{$payment->id}}">{{$payment->name}} - {{$payment->price}}zł</option>
@@ -19,7 +22,10 @@
                 </select>
             </div>
             <div class="col-6">
-                <h2>Sposób transportu</h2>
+            <div class="underline">
+                    <h2> Sposób transportu </h2>
+                    <div class="line"></div>
+            </div>
                 <select id="transport" name="transport">
                     @foreach($transports as $transport)
                         <option value="{{$transport->id}}">{{$transport->name}} - {{$transport->price}}zł</option>
@@ -31,6 +37,7 @@
             <div class="col-12">
                 <div class="row">
                     <h2>Dane do wysyłki</h2>
+                      
                 </div>
                 <div class="row">
                     <div class="col-6">
@@ -114,6 +121,7 @@
                 </div>
             </div>
         </div>
+        <br>
         <button type="submit" class="button"> Podsumowanie </button>
     </div>
 </form>

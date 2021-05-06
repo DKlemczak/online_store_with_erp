@@ -1,6 +1,7 @@
 ﻿using enova365.OnlineStoreWithErp.Models.CommitSessionModels;
 using enova365.OnlineStoreWithErp.Models.CustomViewInfos;
 using enova365.OnlineStoreWithErp.Utils;
+using enova365.OnlineStoreWithErp.Workers.AktualizujNazwyGrup;
 using Newtonsoft.Json;
 using Soneta.Business;
 using Soneta.Business.Db;
@@ -85,6 +86,8 @@ namespace enova365.OnlineStoreWithErp.Config
 
                 sess.Save();
             }
+
+            AktualizujNazwyGrupWorker.AktaulizujNazwyGrupMethod(Session);
         }
     }
 }

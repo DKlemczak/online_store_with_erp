@@ -18,23 +18,28 @@ namespace enova365.OnlineStoreWithErp.Workers.AktualizujNazwyGrup
                 Towar[] towary = sess.GetHandel().Towary.Towary.WgKodu.ToArray();
                 List<Grupa> grupy = new EnovaConfig(sess).Grupy;
 
-                using (ITransaction trans = sess.Logout(true))
-                {
-                    foreach (Towar towar in towary)
-                    {
-                        Grupa grupa = grupy.FirstOrDefault(g => g.Id == towar.GetGrupaId());
-
-                        if (grupa != null)
-                            towar.SetGrupa(grupa.NazwaHierarchiczna);
-                    }
-
-                    trans.CommitUI();
-                }
+                UpdateNameOfGrups(sess, towary, grupy);
 
                 sess.Save();
             }
 
             return null;
+        }
+
+        private static void UpdateNameOfGrups(Session sess, Towar[] towary, List<Grupa> grupy)
+        {
+            using (ITransaction trans = sess.Logout(true))
+            {
+                towary.ToList().ForEach(t => UpdateGroup(grupy, t));
+
+                trans.CommitUI();
+            }
+        }
+
+        private static void UpdateGroup(List<Grupa> list, Towar towar)
+        {
+            if (list.FirstOrDefault(g => g.Id == towar.GetGrupaId()) is Grupa grupa)
+                towar.SetGrupa(grupa.NazwaHierarchiczna);
         }
     }
 }

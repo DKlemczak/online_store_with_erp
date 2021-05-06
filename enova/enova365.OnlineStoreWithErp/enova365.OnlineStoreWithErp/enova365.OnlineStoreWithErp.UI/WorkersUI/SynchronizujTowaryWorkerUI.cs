@@ -12,9 +12,6 @@ namespace enova365.OnlineStoreWithErp.UI.WorkersUI
     {
         public SynchronizujTowaryWorkerUI(Context cx) : base(cx) { }
 
-        [Context]
-        public Towar[] Towary { get; set; }
-
         [Action("Synchronizuj towary",
             Description = "",
             Mode = ActionMode.SingleSession | ActionMode.OnlyTable,
@@ -22,6 +19,6 @@ namespace enova365.OnlineStoreWithErp.UI.WorkersUI
             Icon = ActionIcon.Wizard,
             Priority = 11)]
         public object SynchronizujTowaryUIMethod()
-            => SynchronizujTowaryWorker.SynchronizujTowaryMethod(Context, Towary);
+            => SynchronizujTowaryWorker.SynchronizujTowaryMethod(Session);
     }
 }

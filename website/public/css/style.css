@@ -10,7 +10,8 @@ html {
 
 body {
     font-family: 'Dosis', sans-serif;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 75%, rgba(194, 192, 192) 95%);
+    background: linear-gradient(180deg, rgba(0,0,0,0) 75%, rgba(194, 192, 192) 95%); 
+    height: 100 !important
 }
 
 .hero-bg {
@@ -193,26 +194,42 @@ main h2 {
 
 /* footer */
 
-footer {
-    height: 40px;
-    line-height: 40px; 
-    font-size: 30px;
-    word-spacing: 20px;
-    text-align: center; 
-    border-top: 2px solid rgb(73, 73, 73);
-    background-color: rgb(194, 192, 192);
+.container-fluid {
+    overflow: hidden;
+    margin-top: 250px;
+    background: #d8c1d8;
+    color: #000000 !important;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
-.footer-text li {
+.a {
     list-style: none;
-    display: inline-block;
+    text-decoration: none;
 }
 
-.footer-text li a {
-    text-decoration: none;
-    font-weight: bold;
-    color: rgb(158, 45, 64);
+small {
+    font-size: calc(12px + (15 - 12) * ((100vw - 360px) / (1600 - 360))) !important;
 }
+
+.bold-text {
+    color: #000000 !important;
+}
+
+.mt-55 {
+    margin-top: calc(50px + (60 - 50) * ((100vw - 360px) / (1600 - 360))) !important;
+}
+
+.social {
+    font-size: 21px !important;
+}
+
+.rights {
+    font-size: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important;
+}
+
+
+
 
 /* przyciski */
 

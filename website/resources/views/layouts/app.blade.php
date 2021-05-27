@@ -111,18 +111,20 @@
                      </div>
 
                      <div class="col-xl-2 col-md-4 col-sm-4 col-12">
-                         <h6 class="mb-3 mb-lg-4 bold-text "><b>MENU</b></h6>
-                         <ul class="list-unstyled">
-                             <li>Home</li>
+                         <h6 class="mb-3 mb-lg-4 bold-text text-center"><b>MENU</b></h6>
+                         <hr>
+                         <ul class="list-unstyled text-center">
+                             <li> <a href="#"> Home </a> </li>
                              <li>...</li>
                              <li>...</li>
                          </ul>
                      </div>
 
                      <div class="col-xl-2 col-md-4 col-sm-4 col-12">
-                         <h6 class="mb-3 mb-lg-4 text-muted bold-text mt-sm-0 mt-5"><b>Siedziba firmy:</b></h6>
-                         <p class="mb-1">ul. Przykładowa 12, </p>
-                         <p> 00-111 Poznań</p>
+                         <h6 class="mb-3 mb-lg-4 text-muted bold-text mt-sm-0 mt-5 text-center"><b>Siedziba firmy:</b></h6>
+                         <hr>
+                         <p class="mb-1 text-center">ul. Przykładowa 12, </p>
+                         <p class="mb-1 text-center"> 00-111 Poznań</p>
                      </div>
                  </div>
 

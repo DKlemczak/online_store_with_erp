@@ -5,7 +5,7 @@
         <div class="header-img">
         <div class="header-text">
             <h1> funky  <span> szklanki </span></h1>
-            <p> <p> Szklanka może być do połowy pusta lub do połowy pełna. Jednak najlepszy wybór to szklanka ze sklepu <strong> funky szklanki. </strong></p>
+            <p> <p> Szklanka może być do połowy pusta lub do połowy pełna. Jednak najważniejsze że jest to szklanka ze sklepu <strong> funky szklanki. </strong></p>
         </div>
         <div id="about-us" class="header-bg"> </div>
     </div>

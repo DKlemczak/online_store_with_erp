@@ -10,7 +10,7 @@ class OrdersController extends Controller
 {
     public function index()
     {
-        $orders = Order::with('Positions')->with(array('User' => function($query)
+        $orders = Order::with('Positions')->where('status', 1)->with(array('User' => function($query)
         {
             $query->select('users.id','users.name','users.surname','users.NIP','users.city','users.post_code','users.street','users.building_number', 'users.enova_code');}))->get();
 

@@ -80,6 +80,14 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @if(Auth::user()->is_admin)
+                                    <a class="dropdown-item" href="{{ route('logout') }}">
+                                        Panel administratora
+                                    </a>
+                                    @endif
+                                    <a class="dropdown-item" href="{{route('logout')}}">
+                                        Panel użytkownika
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -130,12 +138,12 @@
 
                  <div class="row">
                      <div class="col-xl-8 col-md-4 col-sm-4 col-auto my-md-0 mt-5 order-sm-1 order-3 align-self-end">
-                         <p class="social text-muted mb-0 pb-0 bold-text"> 
+                         <p class="social text-muted mb-0 pb-0 bold-text">
                              <!-- <span class="mx-2"><i class="fa fa-facebook" aria-hidden="true"></i></span>  -->
                              <span class="mx-2"> <a href="https://www.facebook.com/" target="_blank"> <i class="fab fa-facebook-square"> </i> </a> </span>
-                             <span class="mx-2"> <a href="https://www.linkedin.com/" target="_blank"> <i class="fa fa-linkedin-square" aria-hidden="true"> </i> </a> </span> 
-                             <span class="mx-2"> <a href="https://www.twitter.com/" target="_blank"> <i class="fa fa-twitter" aria-hidden="true"> </i> </a> </span> 
-                             <span class="mx-2"> <a href="https://www.instagram.com/" target="_blank"> <i class="fa fa-instagram" aria-hidden="true"> </i> </a> </span> 
+                             <span class="mx-2"> <a href="https://www.linkedin.com/" target="_blank"> <i class="fa fa-linkedin-square" aria-hidden="true"> </i> </a> </span>
+                             <span class="mx-2"> <a href="https://www.twitter.com/" target="_blank"> <i class="fa fa-twitter" aria-hidden="true"> </i> </a> </span>
+                             <span class="mx-2"> <a href="https://www.instagram.com/" target="_blank"> <i class="fa fa-instagram" aria-hidden="true"> </i> </a> </span>
                             </p>
                             <small class="rights"><span>&#174;</span> <strong> funky-szklanki </strong> All Rights Reserved.</small>
                      </div>

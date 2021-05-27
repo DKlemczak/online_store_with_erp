@@ -137,6 +137,7 @@ class CartController extends Controller
     {
         $cart = session()->get('cart');
         $order = session()->get('order');
+        $order->status = 1;
         $order->save();
         foreach($cart as $product)
         {

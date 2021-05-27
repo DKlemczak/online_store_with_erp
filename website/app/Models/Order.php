@@ -19,6 +19,11 @@ class Order extends Model
         return $this->hasOne(Payment_Type::class);
     }
 
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function Transport()
     {
         return $this->hasOne(Transport_Type::class);

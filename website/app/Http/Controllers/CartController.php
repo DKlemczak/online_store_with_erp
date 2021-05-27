@@ -11,6 +11,7 @@ use App\Models\Order_Positions;
 use App\Models\Payment_Type;
 use App\Models\Transport_Type;
 use App\Models\User;
+use Illuminate\Support\Str;
 
 class CartController extends Controller
 {
@@ -39,6 +40,7 @@ class CartController extends Controller
                     'id' => $product->id,
                     'name' => $product->name,
                     'amount' => $request->amount,
+                    'uuid' => $product->uuid,
                     'price' => $product->price - $product->price * ($product->discount * 0.01)
                 ]
             ];
@@ -58,14 +60,6 @@ class CartController extends Controller
                 }
                 $key++;
             }
-
-           /* $cart[$product->id] =
-            [
-                'id' => $product->id,
-                'name' => $product->name,
-                'amount' => $request->amount,
-                'price' => $product->price - $product->price * ($product->discount * 0.01)
-            ];*/
         }
         session()->put('cart', $cart);
         return redirect()->back();
@@ -117,6 +111,7 @@ class CartController extends Controller
         $value = $value + $payment->price + $transport->price;
 
         $order = new Order();
+        $order->uuid = Str::uuid();
         $order->user_name = $request->name;
         $order->user_surname = $request->surname;
         $order->document_number = "zam/".$number;
@@ -131,7 +126,7 @@ class CartController extends Controller
         $order->payment_id = $payment->id;
         if(auth::user() != null)
         {
-            $order->user = auth::user()->id;
+            $order->user_id = auth::user()->id;
         }
         $order->status = 0;
         session()->put('order', $order);
@@ -149,6 +144,7 @@ class CartController extends Controller
             $position->amount = $product['amount'];
             $position->price = $product['price'];
             $position->product_id = $product['id'];
+            $position->product_uuid = $product['uuid'];
             $position->order_id = $order->id;
             $position->save();
 

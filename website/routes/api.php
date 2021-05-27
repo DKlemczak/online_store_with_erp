@@ -17,4 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('ApiToken')->group(function ()
 {
     Route::get('/orders', 'App\Http\Controllers\Api\OrdersController@index');
+    Route::post('/orders/setstatus','App\Http\Controllers\Api\OrdersController@setStatus');
+    Route::post('/products','App\Http\Controllers\Api\ProductsController@index');
 });

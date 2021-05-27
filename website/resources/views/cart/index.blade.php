@@ -36,8 +36,10 @@
         <div class="row mx-0 mt-4">
             <div class="col-12">
                 <div class="row">
-                    <h2>Dane do wysyłki</h2>
-                      
+                    <div class="col-12">
+                        <h2>Dane do wysyłki</h2>
+                        <p class="text-center">Dane w profilu użytkownika będą danymi do faktury, jeśli nie zostały podane to do faktury użyte zostaną dane wysyłkowe</p>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-6">

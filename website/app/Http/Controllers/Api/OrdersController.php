@@ -10,8 +10,26 @@ class OrdersController extends Controller
 {
     public function index()
     {
-        $orders = Order::with('Positions')->get();
+        $orders = Order::with('Positions')->with(array('User' => function($query)
+        {
+            $query->select('users.id','users.name','users.surname','users.NIP','users.city','users.post_code','users.street','users.building_number', 'users.enova_code');}))->get();
 
         return response()->json($orders);
+    }
+
+    public function setStatus(Request $request) {
+        $table = $request->json()->all();
+
+        foreach($table as $orderList)
+        {
+            $order = Order::where('uuid', $orderList['uuid'])->first();
+            if($order)
+            {
+                $order->status = $orderList['status'];
+                $order->save();
+
+            }
+        }
+        return response()->json($request->json()->all());
     }
 }

@@ -35,7 +35,7 @@ nav {
     line-height: 60px;
     background-color: #d8c1d8;
     text-align: center;
-    overflow: hidden;
+    /*overflow: hidden;*/ /*Poprawka nie pojawiającej się zawartości dropdown'u*/
     z-index: 1;
 }
 

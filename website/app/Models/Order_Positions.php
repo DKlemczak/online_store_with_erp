@@ -16,6 +16,6 @@ class Order_Positions extends Model
 
     public function Product()
     {
-        return $this->belongsTo(Product::class, 'product_id');
+        return $this->belongsTo(Products::class, 'product_id');
     }
 }

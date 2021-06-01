@@ -43,37 +43,18 @@
                 </div>
 
                     <ul class="navbar-nav">
-                        <!-- DK:Pętla listująca grupy produktów, które nie są podgrupami i mają ustawioną wartość on_navbar na 1. W środku przekierowanie do listy produktów danej kategorii. Podkategorie listują się po najechaniu-->
-                        @foreach($GlobalNavbarGroups as $GlobalNavbarGroup)
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('products', [$GlobalNavbarGroup->id]) }}">{!!$GlobalNavbarGroup->name!!}</a>
-                            </li>
-                            <!-- DK:Potem dodam żeby każda nadrzędna kategoria miała listowane podkategorie. Nadkategorie będą listować wszystkie produkty swoich podkategorii. Podkategorie tylko swoje własne-->
-                        @endforeach
-                        <!-- Koniec pętli -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('user') }}">Zamówienia</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('user.data') }}">Dane konta</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        @if(session('cart'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('cart')}}"><i class="fas fa-shopping-cart"></i> {{count(Session::get('cart'))}}</a>
-                            </li>
-                        @endif
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Logowanie') }}</a>
-                                </li>
-                            @endif
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Rejestracja') }}</a>
-                                </li>
-                            @endif
-                        @else
+                        <!-- Authentication Links -->
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -99,7 +80,6 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
                     </ul>
             </div>
         </nav>

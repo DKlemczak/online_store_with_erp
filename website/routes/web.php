@@ -27,12 +27,24 @@ Route::group(['middleware' => 'auth'], function()
 {
     Route::get('/user', 'App\Http\Controllers\UserController@index')->name('user');
     Route::get('/user/data', 'App\Http\Controllers\UserController@userdata')->name('user.data');
+    Route::post('/user/savedata', 'App\Http\Controllers\UserController@savedata')->name('user.savedata');
     
 });
 
 Route::group(['middleware' => 'admin'], function ()
 {
     Route::get("/dashboard", "App\Http\Controllers\Dashboard\DashboardController@index")->name('dashboard');
+
+    Route::resource('dashboard/products', 'App\Http\Controllers\Dashboard\ProductsController', ['except'=>['show'], 'names' => [
+        'index'   => 'dashboard.products.index'
+    ]], ['except' => ['show']])->middleware(['auth', 'admin']);
+
+    Route::resource('dashboard/products/{product_id}/photos', 'App\Http\Controllers\Dashboard\ProductPhotosController', ['except'=>['show'], 'names' => [
+        'index'   => 'dashboard.products.photos.index',
+        'create'  => 'dashboard.products.photos.create',
+        'store'   => 'dashboard.products.photos.store',
+        'destroy' => 'dashboard.products.photos.destroy'
+    ]], ['except' => ['show']])->middleware(['auth', 'admin']);
 
 });
 Auth::routes();

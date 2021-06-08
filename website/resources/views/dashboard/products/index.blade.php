@@ -40,7 +40,8 @@
             <p style="align-self: center"  class="m-0">{!!$product->amount!!}</p>
         </div>
         <div class="col-2">
-            <a><button type="button" class="btn btn-primary">Edytuj zdjęcia</button></a>
+            <a href="{{route('dashboard.products.photos.index',$product->id) }}"><button type="button" class="btn btn-primary">Edytuj zdjęcia</button></a>
         </div>
     @endforeach
+</div>
 @endsection

@@ -23,6 +23,8 @@ class ProductsGroupController extends Controller
             {
                 $productgroup = new Products_Group;
             }
+            
+            $productgroup->name = $enova_group['name'];
             $productgroup->on_navbar = $enova_group['on_navbar'];
 
             $productgroupname_check = Products_Group::where('name',$enova_group['parent_group_name'])->first();

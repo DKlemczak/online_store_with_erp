@@ -17,7 +17,8 @@ class ProductsController extends Controller
         $table = $request->json()->all();
 
         $orders = Order::where('status', 1)->get();
-        if ($orders)
+
+        if ($orders->count() != 0)
         {
             return response(['message' => 'Wszystkie zamówienia muszą zostać zsynchronizowane przed synchronizacją produktów.'], 403);
         }

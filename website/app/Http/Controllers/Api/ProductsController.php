@@ -16,7 +16,7 @@ class ProductsController extends Controller
     {
         $table = $request->json()->all();
 
-        $orders = Order::with('positions')->where('status', 1)->get();
+        $orders = Order::where('status', 1)->get();
         if ($orders)
         {
             return response(['message' => 'Wszystkie zamówienia muszą zostać zsynchronizowane przed synchronizacją produktów.'], 403);
@@ -26,7 +26,7 @@ class ProductsController extends Controller
             foreach ($table as $product_details)
             {
                 $product_check = Products::where('uuid', $product_details['uuid'])->first();
-                if(isset($product))
+                if(isset($product_check))
                 {
                     $product = $product_check;
                 }
@@ -34,6 +34,7 @@ class ProductsController extends Controller
                 {
                     $product = new Products;
                 }
+
                 $product->name = $product_details['name'];
                 $product->uuid = $product_details['uuid'];
                 $product->code = $product_details['code'];
@@ -44,6 +45,7 @@ class ProductsController extends Controller
                 $group = Products_Group::where('name', $product_details['group_name'])->first();
                 $product->group_id = $group->id;
                 $product->discount = $product_details['discount'];
+
                 foreach($product_detail['tags'] as $tag)
                 {
                     $product_tag = ProductsTags::where('name',$tag['name'])->fist();

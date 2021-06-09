@@ -47,7 +47,7 @@ class ProductsController extends Controller
                 $product->group_id = $group->id;
                 $product->discount = $product_details['discount'];
 
-                foreach($product_detail['tags'] as $tag)
+                foreach($product_details['tags'] as $tag)
                 {
                     $product_tag = ProductsTags::where('name',$tag['name'])->fist();
                     if(!isset($product_tag))

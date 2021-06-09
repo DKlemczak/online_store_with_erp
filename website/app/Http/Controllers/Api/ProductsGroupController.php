@@ -14,7 +14,7 @@ class ProductsGroupController extends Controller
 
         foreach ($table as $enova_group)
         {
-            $productgroup_check = ProductsGroup::where('name', $enova_group['name'])->first();
+            $productgroup_check = Products_Group::where('name', $enova_group['name'])->first();
             if(isset($productgroup))
             {
                 $productgroup = $productgroup_check;
@@ -24,7 +24,7 @@ class ProductsGroupController extends Controller
                 $productgroup = new Products_Group;
             }
             $productgroup->on_navber = $enova_group['on_navber'];
-            $productgroupname_check = ProductsGroup::where('name',$enova_group['group_name'])->first();
+            $productgroupname_check = Products_Group::where('name',$enova_group['group_name'])->first();
             $productgroup->group_id = $productgroupname_check->id;
             $productgroup->save();
         }

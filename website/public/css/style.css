@@ -173,7 +173,7 @@ main h2 {
     transition: transform .3s;
 }
 
-.contact {
+/* .contact {
     text-align: center;
 }
 
@@ -190,7 +190,7 @@ main h2 {
 
 .contact p {
     font-size: 18px;
-}
+} */
 
 /* footer */
 
@@ -203,9 +203,10 @@ main h2 {
     padding-bottom: 0;
 }
 
-.a {
-    list-style: none;
+a.black-link {
+    /* list-style: none; */
     text-decoration: none;
+    color: #000000;
 }
 
 small {

@@ -91,7 +91,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Wyloguj') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -111,14 +111,17 @@
 
     <div class="container-fluid pb-0 mb-0 justify-content-center text-light">
      <footer>
-         <div class="row my-5 justify-content-center py-5">
+         <div class="row my-5 justify-content-center">
              <div class="col-11">
-                 <div class="row">
-                     <div class="col-xl-8 col-md-4 col-sm-4 col-12 my-auto mx-auto a">
-                    <img src="..\img\logo.png" width="150px">
+                 <div class="row mb-4">
+                    <div class="col-12 my-auto mx-auto text-center">
+                        <img src="..\img\logo.png" width="150px">
                      </div>
+                 </div>
 
-                     <div class="col-xl-2 col-md-4 col-sm-4 col-12">
+                 <div class="row">
+
+                     <div class="col-md-6 col-12">
                          <h6 class="mb-3 mb-lg-4 bold-text text-center"><b>MENU</b></h6>
                          <hr>
                          <ul class="list-unstyled text-center">
@@ -128,34 +131,36 @@
                          </ul>
                      </div>
 
-                     <div class="col-xl-2 col-md-4 col-sm-4 col-12">
+                     <div class="col-md-6 col-12">
                          <h6 class="mb-3 mb-lg-4 text-muted bold-text mt-sm-0 mt-5 text-center"><b>Siedziba firmy:</b></h6>
                          <hr>
                          <p class="mb-1 text-center">ul. Przykładowa 12, </p>
                          <p class="mb-1 text-center"> 00-111 Poznań</p>
                      </div>
+
+                 </div>
+
+                 <div class="row mb-5">
+                     <div class="col-sm-4 col-auto order-1 align-self-end ">
+                         <h6 class="mt-55 mt-2 text-muted bold-text"><b>Paulina Wróblewska</b></h6><small> <span><i class="fa fa-envelope" aria-hidden="true"></i></span> pw@funky-szklanki.com</small>
+                     </div>
+                     <div class="col-sm-4 col-auto order-2 align-self-end mt-3 ">
+                         <h6 class="text-muted bold-text"><b>Paweł Ganczarski</b></h6><small><span><i class="fa fa-envelope" aria-hidden="true"></i></span> pg@funky-szklanki.com</small>
+                     </div>
+                     <div class="col-sm-4 col-auto order-1 align-self-end ">
+                         <h6 class="mt-55 mt-2 text-muted bold-text"><b>Daniel Klemczak </b></h6><small> <span><i class="fa fa-envelope" aria-hidden="true"></i></span> dk@funky-szklanki.com</small>
+                     </div>
                  </div>
 
                  <div class="row">
-                     <div class="col-xl-8 col-md-4 col-sm-4 col-auto my-md-0 mt-5 order-sm-1 order-3 align-self-end">
-                         <p class="social text-muted mb-0 pb-0 bold-text">
-                             <!-- <span class="mx-2"><i class="fa fa-facebook" aria-hidden="true"></i></span>  -->
-                             <span class="mx-2"> <a href="https://www.facebook.com/" target="_blank"> <i class="fab fa-facebook-square"> </i> </a> </span>
-                             <span class="mx-2"> <a href="https://www.linkedin.com/" target="_blank"> <i class="fa fa-linkedin-square" aria-hidden="true"> </i> </a> </span>
-                             <span class="mx-2"> <a href="https://www.twitter.com/" target="_blank"> <i class="fa fa-twitter" aria-hidden="true"> </i> </a> </span>
-                             <span class="mx-2"> <a href="https://www.instagram.com/" target="_blank"> <i class="fa fa-instagram" aria-hidden="true"> </i> </a> </span>
-                            </p>
-                            <small class="rights"><span>&#174;</span> <strong> funky-szklanki </strong> All Rights Reserved.</small>
-                     </div>
-                     <div class="col-xl-2 col-md-4 col-sm-4 col-auto order-1 align-self-end ">
-                         <h6 class="mt-55 mt-2 text-muted bold-text"><b>Paulina Wróblewska</b></h6><small> <span><i class="fa fa-envelope" aria-hidden="true"></i></span> pw@funky-szklanki.com</small>
-                     </div>
-                     <div class="col-xl-2 col-md-4 col-sm-4 col-auto order-2 align-self-end mt-3 ">
-                         <h6 class="text-muted bold-text"><b>Paweł Ganczarski</b></h6><small><span><i class="fa fa-envelope" aria-hidden="true"></i></span> pg@funky-szklanki.com</small>
-                     </div>
-                     <div class="col-xl-2 col-md-4 col-sm-4 col-auto order-1 align-self-end ">
-                         <h6 class="mt-55 mt-2 text-muted bold-text"><b>Daniel Klemczak </b></h6><small> <span><i class="fa fa-envelope" aria-hidden="true"></i></span> dk@funky-szklanki.com</small>
-                     </div>
+                    <small class="rights col-12 col-md-6"><span>&#174;</span> <strong> funky-szklanki </strong> All Rights Reserved.</small>
+                    <p class="social text-muted mb-0 pb-0 bold-text col-12 col-md-6 d-flex justify-content-end">
+                        <!-- <span class="mx-2"><i class="fa fa-facebook" aria-hidden="true"></i></span>  -->
+                        <span class="mx-2"> <a href="https://www.facebook.com/" class="black-link" target="_blank"> <i class="fab fa-facebook-square"> </i> </a> </span>
+                        <span class="mx-2"> <a href="https://www.linkedin.com/" class="black-link" target="_blank"> <i class="fa fa-linkedin-square" aria-hidden="true"> </i> </a> </span>
+                        <span class="mx-2"> <a href="https://www.twitter.com/" class="black-link" target="_blank"> <i class="fa fa-twitter" aria-hidden="true"> </i> </a> </span>
+                        <span class="mx-2"> <a href="https://www.instagram.com/" class="black-link" target="_blank"> <i class="fa fa-instagram" aria-hidden="true"> </i> </a> </span>
+                    </p>
                  </div>
              </div>
          </div>

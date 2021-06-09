@@ -36,6 +36,7 @@
                 <button type="submit" class="btn btn-danger">Usuń zdjęcie</button></a>
             </form>
         </div>
+    </div>
     @endforeach
 </div>
 @endsection

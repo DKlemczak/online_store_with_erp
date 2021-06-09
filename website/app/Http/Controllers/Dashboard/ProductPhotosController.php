@@ -38,7 +38,7 @@ class ProductPhotosController extends Controller
         $photo = new Product_Photos();
         $photo->no = $request->no;
         $photo->product_id = $product_id;
-        $photo->path = 'img/'.$product_id.'/'.$filename;
+        $photo->path = '/img/'.$product_id.'/'.$filename;
         $photo->save();
 
         return redirect()->route('dashboard.products.photos.index',[$product_id]);

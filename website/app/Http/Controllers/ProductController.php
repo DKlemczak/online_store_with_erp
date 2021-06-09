@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\Products_Group;
+use App\Models\Product_Photos;
 
 class ProductController extends Controller
 {
@@ -15,7 +16,8 @@ class ProductController extends Controller
         $groups_array = $this->find_groups($products_group, $groups_array);
 
         $products = Products::whereIn('group_id',$groups_array)->where('is_active',1)->get();
-        return view('products.index',['products'=>$products]);
+        $photo = Product_Photos::orderBy('no')->first();
+        return view('products.index',['products'=>$products,'photo'=>$photo]);
     }
 
     function find_groups($group, $groups_array)

@@ -16,10 +16,32 @@
             <h2> aktualne promocje </h2>
             <div class="line"></div>
             </div>
-            <div>
-                @foreach($products as $product)
-                    <a href="{{ route('products.details', [$product->Products_Group->name,$product->id]) }}"><span>{!!$product->name!!}</span></a>
-                @endforeach
+            <div class="row">
+                <div class="col-3">
+                    @foreach($products as $product)
+                        <a href="{{ route('products.details', [$product->Products_Group->name,$product->id]) }}">
+                            @foreach($product->Product_Photos_NO as $photo)
+                                @if($loop->first)
+                                    <div class="row text-center">
+                                        <div class="col-12">
+                                            <img src="{!!$photo->path!!}" />
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                            <div class="row text-center">
+                                <div class="col-12">
+                                    <p class="mb-0">{!!$product->name!!}</p>
+                                </div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col-12">
+                                    <p class="mb-0">{{$product->price - $product->price * ($product->discount * 0.01)}} <span style="text-decoration: line-through;color: red;">{!!$product->price!!}</span> zł</p>
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
             </div>
         </section>
 

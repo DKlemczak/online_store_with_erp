@@ -14,6 +14,11 @@ class Products extends Model
         return $this->hasMany(Product_Photos::class,'product_id','id');
     }
 
+    public function Product_Photos_NO()
+    {
+        return $this->hasMany(Product_Photos::class,'product_id','id')->orderBy('no');
+    }
+
     public function Products_Group()
     {
         return $this->belongsTo(Products_Group::class,'group_id');

@@ -1,6 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('content')
+<a href="{{route('dashboard.products.photos.create',$product_id)}}"><button class="btn btn-success">Dodaj zdjęcie</button></a>
 <div class="container text-center">
     <div class="row">
         <div class="col-1">
@@ -22,7 +23,7 @@
             <p style="align-self: center" class="m-0">{!!$photo->no!!}</p>
         </div>
         <div class="col-6 justify-content-center" style="display: flex;">
-            <p style="align-self: center" class="m-0">Zdjęcie</p>
+            <img src="{!!$photo->path!!}" />
         </div>
         <div class="col-3 justify-content-center" style="display: flex;">
             <p style="align-self: center" class="m-0">{!!$photo->path!!}</p>
@@ -35,6 +36,7 @@
                 <button type="submit" class="btn btn-danger">Usuń zdjęcie</button></a>
             </form>
         </div>
+    </div>
     @endforeach
 </div>
 @endsection

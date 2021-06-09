@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+@foreach($product->Product_Photos_NO as $photo)
+    <img src="{!!$photo->path!!}" alt="{!!$photo->no!!}" />
+@endforeach
 <p>{!!$product->name!!}</p>
 <p>{!!$product->description!!}</p>
 @if($product->discount > 0)
@@ -8,7 +11,7 @@
 @else
 <p>{!!$product->price!!}</p>
 @endif
-<p>Tagi: 
+<p>Tagi:
 @foreach($product->Products_tags as $tag)
 {!!$tag->name!!},
 @endforeach

@@ -10,7 +10,7 @@ html {
 
 body {
     font-family: 'Dosis', sans-serif;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 75%, rgba(194, 192, 192) 95%); 
+    background-color: #FFFAF0;
     height: 100 !important
 }
 
@@ -259,8 +259,44 @@ small {
 
 button:hover {
     color: #000000;
-    background-color: rgb(158, 45, 64);;
+    background-color: rgb(158, 45, 64);
     }
+
+.btn-primary {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid rgb(158, 45, 64);
+    margin: 0 0.3em 0.3em 0;
+    /* margin: 0 auto; */
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 600;
+    color: #000000;
+    text-align: center;
+    transition: all 0.4s;
+    max-width: 250px;
+    background-color: #fff;
+    }    
+
+.btn-primary:hover {
+    color: #000000;
+    background-color: rgb(158, 45, 64);
+    border: 0.1em solid #000000;
+}
+
+.btn-link {
+    color: black;
+}
+
+.btn-link:hover {
+    color: rgb(158, 45, 64);
+}  
+
+.form-check-label {
+    color:rgb(158, 45, 64);
+} 
 
 @media all and (max-width:30em) {
         button {

@@ -19,6 +19,6 @@ Route::middleware('ApiToken')->group(function ()
     Route::get('/orders', 'App\Http\Controllers\Api\OrdersController@index');
     Route::post('/orders/setstatus','App\Http\Controllers\Api\OrdersController@setStatus');
     Route::post('/products','App\Http\Controllers\Api\ProductsController@index');
-    Route::post('/productsgroup','App\Http\Controlles\Api\ProductsGroupController@index');
+    Route::post('/productsgroup','App\Http\Controllers\Api\ProductsGroupController@index');
     Route::post('/user/setenovacode','App\Http\Controllers\Api\UserController@setenovacode');
 });

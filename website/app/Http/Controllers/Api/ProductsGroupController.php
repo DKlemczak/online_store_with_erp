@@ -15,7 +15,7 @@ class ProductsGroupController extends Controller
         foreach ($table as $enova_group)
         {
             $productgroup_check = Products_Group::where('name', $enova_group['name'])->first();
-            if(isset($productgroup))
+            if(isset($productgroup_check))
             {
                 $productgroup = $productgroup_check;
             }
@@ -23,7 +23,7 @@ class ProductsGroupController extends Controller
             {
                 $productgroup = new Products_Group;
             }
-            
+
             $productgroup->name = $enova_group['name'];
             $productgroup->on_navbar = $enova_group['on_navbar'];
 

@@ -52,11 +52,16 @@ class CartController extends Controller
             {
                 if($cartprod['id'] == $product->id)
                 {
-                    $cartprod['amount'] = $cartprod['amount'] + $request->amount;
-                    $cart[$key] = $cartprod;
+                    if(($cartprod['amount'] + $request->amount) > $product->amount) {
+                        // Przekroczona ilość
+                        // Dodać obsługę wiadomości dla użytkownika
+                    } else {
+                        $cartprod['amount'] = $cartprod['amount'] + $request->amount;
+                        $cart[$key] = $cartprod;
 
-                    session()->put('cart', $cart);
-                    return redirect()->back();
+                        session()->put('cart', $cart);
+                        return redirect()->back();
+                    }
                 }
                 $key++;
             }

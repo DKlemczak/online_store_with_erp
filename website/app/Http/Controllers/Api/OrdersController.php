@@ -25,7 +25,7 @@ class OrdersController extends Controller
             $order = Order::where('uuid', $orderList['uuid'])->first();
             if($order)
             {
-                $order->status = $orderList['status'];
+                $order->status = 2;
                 $order->save();
 
             }

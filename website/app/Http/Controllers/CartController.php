@@ -55,6 +55,7 @@ class CartController extends Controller
                 
                     if($cartprod['amount'] + $request->amount > $product->amount)
                     {
+                        $cartprod['amount'] = $product->amount;
                         $message = 'Łączna ilość sztuk produktu w zamówieniu wykraczała poza ilość sztuk produktu na magazynie. Ilość sztuk zastąpiono maksymalną ilością';
                     }
                     else

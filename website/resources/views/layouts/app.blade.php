@@ -32,76 +32,69 @@
 </head>
 <body>
     <div id="app" style="min-height: 94.35vh;">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ ('funky szklanki') }}
                 </a>
-
-                <div class="nav-mobile">
-                    <button> <i class="fas fa-bars"></i> </button>
-                </div>
-
-                    <ul class="navbar-nav">
-                        <!-- DK:Pętla listująca grupy produktów, które nie są podgrupami i mają ustawioną wartość on_navbar na 1. W środku przekierowanie do listy produktów danej kategorii. Podkategorie listują się po najechaniu-->
-                        @foreach($GlobalNavbarGroups as $GlobalNavbarGroup)
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('products', [$GlobalNavbarGroup->id]) }}">{!!$GlobalNavbarGroup->name!!}</a>
-                            </li>
-                            <!-- DK:Potem dodam żeby każda nadrzędna kategoria miała listowane podkategorie. Nadkategorie będą listować wszystkie produkty swoich podkategorii. Podkategorie tylko swoje własne-->
-                        @endforeach
-                        <!-- Koniec pętli -->
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        @if(session('cart'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('cart')}}"><i class="fas fa-shopping-cart"></i> {{count(Session::get('cart'))}}</a>
-                            </li>
-                        @endif
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"> <span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <!-- DK:Pętla listująca grupy produktów, które nie są podgrupami i mają ustawioną wartość on_navbar na 1. W środku przekierowanie do listy produktów danej kategorii. Podkategorie listują się po najechaniu-->
+                            @foreach($GlobalNavbarGroups as $GlobalNavbarGroup)
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Logowanie') }}</a>
+                                    <a class="nav-link" href="{{ route('products', [$GlobalNavbarGroup->id]) }}">{!!$GlobalNavbarGroup->name!!}</a>
+                                </li>
+                                <!-- DK:Potem dodam żeby każda nadrzędna kategoria miała listowane podkategorie. Nadkategorie będą listować wszystkie produkty swoich podkategorii. Podkategorie tylko swoje własne-->
+                            @endforeach
+                            <!-- Koniec pętli -->
+                        </ul>
+                        <!-- Right Side Of Navbar -->
+                        <ul class="navbar-nav ml-auto">
+                            @if(session('cart'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('cart')}}"><i class="fas fa-shopping-cart"></i> {{count(Session::get('cart'))}}</a>
                                 </li>
                             @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Rejestracja') }}</a>
+                            <!-- Authentication Links -->
+                            @guest
+                                @if (Route::has('login'))
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Logowanie') }}</a>
+                                    </li>
+                                @endif
+                                @if (Route::has('register'))
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Rejestracja') }}</a>
+                                    </li>
+                                @endif
+                            @else
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->name }}
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        @if(Auth::user()->is_admin)
+                                        <a class="dropdown-item" href="{{ route('dashboard') }}">
+                                            Panel administratora
+                                        </a>
+                                        @endif
+                                        <a class="dropdown-item" href="{{route('user')}}">
+                                            Panel użytkownika
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                            {{ __('Wyloguj') }}
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
                                 </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
+                            @endguest
+                        </ul>
+                    </div>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    @if(Auth::user()->is_admin)
-                                    <a class="dropdown-item" href="{{ route('dashboard') }}">
-                                        Panel administratora
-                                    </a>
-                                    @endif
-                                    <a class="dropdown-item" href="{{route('user')}}">
-                                        Panel użytkownika
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Wyloguj') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-            </div>
         </nav>
 
         <main class="py-4">

@@ -115,7 +115,7 @@
              <div class="col-11">
                  <div class="row mb-4">
                     <div class="col-12 my-auto mx-auto text-center">
-                        <img src="..\img\logo.png" width="150px">
+                        <img src="\img\logo.png" width="150px">
                      </div>
                  </div>
 
@@ -125,9 +125,9 @@
                          <h6 class="mb-3 mb-lg-4 bold-text text-center"><b>MENU</b></h6>
                          <hr>
                          <ul class="list-unstyled text-center">
-                             <li> <a href="#"> Home </a> </li>
-                             <li>...</li>
-                             <li>...</li>
+                             <li> <a href="#" class="black-link"> Strona główna </a> </li>
+                             <li> <a href="#about-us" class="black-link"> Aktualne promocje </a> </li>
+                             <li> <a href="#products" class="black-link"> Co nas wyróżnia? </a> </li>
                          </ul>
                      </div>
 

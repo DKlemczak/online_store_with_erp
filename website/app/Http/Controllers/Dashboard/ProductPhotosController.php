@@ -24,8 +24,13 @@ class ProductPhotosController extends Controller
 
     function store(Request $request, $product_id)
     {
-        $path = public_path().'/img/'.$product_id;
+        $path = public_path().'/img/product_photos/';
 
+        if(!File::exists($path))
+        {
+            File::makeDirectory($path);
+        }
+        $path = public_path().'/img/product_photos/'.$product_id;
         if(!File::exists($path))
         {
             File::makeDirectory($path);
@@ -38,7 +43,7 @@ class ProductPhotosController extends Controller
         $photo = new Product_Photos();
         $photo->no = $request->no;
         $photo->product_id = $product_id;
-        $photo->path = '/img/'.$product_id.'/'.$filename;
+        $photo->path = '/img/product_photos/'.$product_id.'/'.$filename;
         $photo->save();
 
         return redirect()->route('dashboard.products.photos.index',[$product_id]);

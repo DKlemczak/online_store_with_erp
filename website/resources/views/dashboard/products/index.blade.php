@@ -42,6 +42,6 @@
         <div class="col-2">
             <a href="{{route('dashboard.products.photos.index',$product->id) }}"><button type="button" class="btn btn-primary">Edytuj zdjęcia</button></a>
         </div>
-    @endforeach
 </div>
+@endforeach
 @endsection

@@ -16,34 +16,26 @@
             <h2> aktualne promocje </h2>
             <div class="line"></div>
             </div>
-            <div class="row">
-                <div class="col-3">
-                    @foreach($products as $product)
-                        <a href="{{ route('products.details', [$product->Products_Group->name,$product->id]) }}">
-                            @foreach($product->Product_Photos_NO as $photo)
-                                @if($loop->first)
-                                    <div class="row text-center">
-                                        <div class="col-12">
-                                            <img src="{!!$photo->path!!}" />
-                                        </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                            <div class="row text-center">
-                                <div class="col-12">
-                                    <p class="mb-0">{!!$product->name!!}</p>
-                                </div>
-                            </div>
-                            <div class="row text-center">
-                                <div class="col-12">
-                                    <p class="mb-0">{{$product->price - $product->price * ($product->discount * 0.01)}} <span style="text-decoration: line-through;color: red;">{!!$product->price!!}</span> zł</p>
-                                </div>
-                            </div>
-                        </a>
-                    @endforeach
-                </div>
-            </div>
-        </section>
+
+<div class="row">
+    @foreach($products as $product)
+    <div class="col-3">
+        <div class="card" style="width: 18rem;">
+        @foreach($product->Product_Photos_NO as $photo)
+            @if($loop->first)                                   
+                <img  class="card-img-top" src="{!!$photo->path!!}" />                     
+            @endif
+        @endforeach
+        <div class="card-body">
+        <h5 class="card-title">{!!$product->name!!}</h5>
+        <p class="card-text">{{$product->price - $product->price * ($product->discount * 0.01)}} <span style="text-decoration: line-through;color: red;"> {!!$product->price!!}</span> zł</p>
+        <a href="{{ route('products.details', [$product->Products_Group->name,$product->id]) }}" class="btn btn-primary">Przejdź do produktu</a>
+        </div>
+        </div>  
+    </div>
+        @endforeach
+</div>
+</section>
 
         <section id="products" class="products">
                 <div class="underline">

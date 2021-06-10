@@ -1,9 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-<p>Nazwa - Ilość - Cena</p>
+<div class="row d-none d-lg-block"> 
+<div class="col-12 col-lg-6">Nazwa:</div>
+<div class="col-12 col-lg-2">Ilość:</div>
+<div class="col-12 col-lg-2">Cena:</div>
+<div class="col-12 col-lg-2">Usuń</div></div>
 @foreach ($cart as $product)
-<p>{!!$product['name']!!} - {!!$product['amount']!!} - {!!$product['price']!!} <a href="{{ route('cart.remove', [key($cart)]) }}"><button class="btn btn-danger">X</button></a></p>
+<div class="row">
+    <div class="col-12 col-lg-6"> {!!$product['name']!!}
+    </div>
+    <div class="col-12 col-lg-2">  {!!$product['amount']!!} </div>
+    <div class="col-12 col-lg-2"> {!!$product['price']!!}  </div>
+    <div class="col-12 col-lg-2"> <a href="{{ route('cart.remove', [key($cart)]) }}" class="btn btn-danger">X</a> </div>
+</div>
 @endforeach
 <p> Wartość zamówienia {!!$value!!}zł</p>
 <form method="POST" enctype="multipart/form-data" action="{{ route('cart.summary') }}" accept-charset="UTF-8">

@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('code', 100);
             $table->integer('amount');
             $table->float('price',8,2);
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->boolean('is_active');
             $table->foreignId('group_id')->constrained('products_group');
             $table->integer('discount');

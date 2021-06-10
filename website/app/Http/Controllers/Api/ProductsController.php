@@ -62,6 +62,7 @@ class ProductsController extends Controller
                         $product_to_tag = new Product_To_Tags;
                         $product_to_tag->products_id = $product->id;
                         $product_to_tag->products_tags_id = $product_tag->id;
+                        $product_to_tag->save();
                     }
                 }
                 $product->save();

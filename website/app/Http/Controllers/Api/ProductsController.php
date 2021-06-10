@@ -46,6 +46,7 @@ class ProductsController extends Controller
                 $group = Products_Group::where('name', $product_details['group_name'])->first();
                 $product->group_id = $group->id;
                 $product->discount = $product_details['discount'];
+                $product->save();
 
                 foreach($product_details['tags'] as $tag)
                 {
@@ -65,7 +66,6 @@ class ProductsController extends Controller
                         $product_to_tag->save();
                     }
                 }
-                $product->save();
             }
         }
     }

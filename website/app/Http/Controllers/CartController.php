@@ -52,7 +52,7 @@ class CartController extends Controller
             foreach($cart as $cartprod)
             {
                 if($cartprod['id'] == $product->id)
-                
+                { 
                     if($cartprod['amount'] + $request->amount > $product->amount)
                     {
                         $cartprod['amount'] = $product->amount;

@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-
-
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+@endif
 <div class="row">
     <div class="col-12 col-lg-6 d-flex justify-content-center img-box">
         @foreach($product->Product_Photos_NO as $photo)

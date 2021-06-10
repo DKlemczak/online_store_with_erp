@@ -44,6 +44,7 @@ class CartController extends Controller
                     'price' => $product->price - $product->price * ($product->discount * 0.01)
                 ]
             ];
+            $message = 'Produkt dodano do koszyka';
         }
         else
         {
@@ -51,23 +52,27 @@ class CartController extends Controller
             foreach($cart as $cartprod)
             {
                 if($cartprod['id'] == $product->id)
-                {
-                    if(($cartprod['amount'] + $request->amount) > $product->amount) {
-                        // Przekroczona ilość
-                        // Dodać obsługę wiadomości dla użytkownika
-                    } else {
-                        $cartprod['amount'] = $cartprod['amount'] + $request->amount;
-                        $cart[$key] = $cartprod;
-
-                        session()->put('cart', $cart);
-                        return redirect()->back();
+                
+                    if($cartprod['amount'] + $request->amount > $product->amount)
+                    {
+                        $message = 'Łączna ilość sztuk produktu w zamówieniu wykraczała poza ilość sztuk produktu na magazynie. Ilość sztuk zastąpiono maksymalną ilością';
                     }
+                    else
+                    {
+                        $cartprod['amount'] = $cartprod['amount'] + $request->amount;
+                        $message = 'Produkt dodano do koszyka';
+                    }
+
+                    $cart[$key] = $cartprod;
+
+                    session()->put('cart', $cart);
+                    return redirect()->back()->with('message', $message);
                 }
                 $key++;
             }
         }
         session()->put('cart', $cart);
-        return redirect()->back();
+        return redirect()->back()->with('message', $message);
     }
 
     function removefromcart($id)

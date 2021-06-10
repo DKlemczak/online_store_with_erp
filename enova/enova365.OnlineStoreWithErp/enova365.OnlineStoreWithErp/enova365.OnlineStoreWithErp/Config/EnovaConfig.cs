@@ -5,6 +5,7 @@ using enova365.OnlineStoreWithErp.Workers.AktualizujNazwyGrup;
 using Newtonsoft.Json;
 using Soneta.Business;
 using Soneta.Business.Db;
+using Soneta.Config;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,13 +17,24 @@ namespace enova365.OnlineStoreWithErp.Config
         {
             Session = sess;
             ConfigFileMethods = new ConfigFileMethods(Session);
-            //ConfigMethods = new ConfigMethods(Session);
+            ConfigMethods = new ConfigMethods(Session);
         }
 
-        //private ConfigMethods ConfigMethods { get; }
-
+        private ConfigMethods ConfigMethods { get; }
         private ConfigFileMethods ConfigFileMethods { get; }
         private Session Session { get; }
+
+        public string WebServiceAddress
+        {
+            get => ConfigMethods.GetValue(ConfPropName.WebServiceAddress, ConfDefault.WebServiceAddress);
+            set => ConfigMethods.SetValue(ConfPropName.WebServiceAddress, value, AttributeType._string);
+        }
+
+        public string WebServiceToken
+        {
+            get => ConfigMethods.GetValue(ConfPropName.WebServiceToken, ConfDefault.WebServiceToken);
+            set => ConfigMethods.SetValue(ConfPropName.WebServiceToken, value, AttributeType._string);
+        }
 
         public List<Grupa> Grupy
         {

@@ -11,9 +11,13 @@
     public static class ConfPropName
     {
         public const string Grupy = "Grupy";
+        public const string WebServiceAddress = "WebServiceAddress";
+        public const string WebServiceToken = "WebServiceToken";
     }
 
     public static class ConfDefault
     {
+        public const string WebServiceAddress = "";
+        public const string WebServiceToken = "";
     }
 }

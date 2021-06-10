@@ -21,7 +21,6 @@ namespace enova365.OnlineStoreWithErp.Models
 
         public List<JSONGrupa> Grupy { get; set; }
 
-        //[JsonArray(Description = "products")]
         public class JSONTowar
         {
             public JSONTowar() { }
@@ -32,10 +31,11 @@ namespace enova365.OnlineStoreWithErp.Models
                 UUID = towar.ID.ToString();
                 Kod = towar.Kod;
                 Ilosc = towar.Zasoby.Sum(z => z.Ilosc.Value);
-                Cena = 0;
+                Cena = towar.Ceny["Podstawowa"].Brutto.Value;
                 Opis = towar.GetOpis();
                 CzyAktywny = towar.GetIsActive();
-                Przecena = "";
+                Przecena = towar.GetRabat();
+                Tagi = towar.GetTagi().Split(';').ToList().ConvertAll(t => new Tag(t.Trim()));
 
                 Grupa grupa = grupy.FirstOrDefault(g => g.Id == towar.GetGrupaId());
 
@@ -74,7 +74,20 @@ namespace enova365.OnlineStoreWithErp.Models
             public string GroupName { get; set; }
 
             [JsonProperty("discount")]
-            public string Przecena { get; set; }
+            public int Przecena { get; set; }
+
+            [JsonProperty("tags")]
+            public List<Tag> Tagi { get; set; }
+
+            public class Tag
+            {
+                [JsonProperty("name")]
+                public string Name { get; set; }
+
+                public Tag() { }
+
+                public Tag(string name) => Name = name;
+            }
         }
 
         public class JSONGrupa

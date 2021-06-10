@@ -3,6 +3,8 @@
   <Page Name="TowarExtViewPage_ePage" CaptionHtml="Edycja cech towaru" DataContext="{new TowarExtView}">
     <Field CaptionHtml="Grupa" EditValue="{GrupaString}" />
     <Field CaptionHtml="CzyAktywna" EditValue="{IsActive}" />
+    <Field CaptionHtml="Tagi" EditValue="{Tagi}" />
+    <Field CaptionHtml="Rabat" EditValue="{Rabat}" />
     <Field CaptionHtml="Opis" EditValue="{Opis}" />
   </Page>
 </DataForm>

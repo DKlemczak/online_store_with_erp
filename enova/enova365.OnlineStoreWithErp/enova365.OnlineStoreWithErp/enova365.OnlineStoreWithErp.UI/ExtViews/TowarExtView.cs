@@ -36,6 +36,37 @@ namespace enova365.OnlineStoreWithErp.UI.ExtViews
             set { Towar.SetOpis(value); OnChanged(); }
         }
 
+        public string Tagi
+        {
+            get => Towar.GetTagi();
+            set { Towar.SetTagi(value); OnChanged(); }
+        }
+
+        public string Rabat
+        {
+            get => Towar.GetRabat().ToString();
+            set
+            {
+                int intValue = int.Parse(value);
+
+                if (intValue < 0 || intValue > 100)
+                    throw new System.Exception("Wartość musi znajdować się w przedziale '0 - 100'");
+
+                Towar.SetRabat(intValue);
+                OnChanged();
+            }
+        }
+
+        public string[] GetListRabat()
+        {
+            List<string> result = new List<string>();
+
+            for (int i = 0; i <= 100; i += 10)
+                result.Add(i.ToString());
+
+            return result.ToArray();
+        }
+
         public string GrupaString
         {
             get => Grupa.GetToStringFromList(GrupaList, Towar.GetGrupaId());

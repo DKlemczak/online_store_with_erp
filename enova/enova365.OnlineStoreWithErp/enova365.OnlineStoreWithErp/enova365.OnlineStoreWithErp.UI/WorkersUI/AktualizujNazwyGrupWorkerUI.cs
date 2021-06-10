@@ -18,7 +18,7 @@ namespace enova365.OnlineStoreWithErp.UI.WorkersUI
             Target = ActionTarget.Menu | ActionTarget.LocalMenu | ActionTarget.ToolbarWithText,
             Icon = ActionIcon.Wizard,
             Priority = 11)]
-        public object AktaulizujNazwyGrupUIMethod()
+        public void AktaulizujNazwyGrupUIMethod()
             => AktualizujNazwyGrupWorker.AktaulizujNazwyGrupMethod(Session);
     }
 }

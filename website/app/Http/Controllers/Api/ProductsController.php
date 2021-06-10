@@ -49,7 +49,7 @@ class ProductsController extends Controller
 
                 foreach($product_details['tags'] as $tag)
                 {
-                    $product_tag = ProductsTags::where('name',$tag['name'])->fist();
+                    $product_tag = ProductsTags::where('name',$tag['name'])->first();
                     if(!isset($product_tag))
                     {
                         $product_tag = new ProductsTags;

@@ -24,7 +24,6 @@ class UserController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -42,7 +41,6 @@ class UserController extends Controller
             $user->post_code = $request->post_code;
             $user->street = $request->street;
             $user->building_number = $request->building_number;
-            $user->email =  $request->email;
             $user->password =  Hash::make($request->password);
             $user->save();        
             return redirect()->back();

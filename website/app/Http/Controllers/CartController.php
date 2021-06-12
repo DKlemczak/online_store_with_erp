@@ -12,6 +12,7 @@ use App\Models\Payment_Type;
 use App\Models\Transport_Type;
 use App\Models\User;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class CartController extends Controller
 {
@@ -132,6 +133,7 @@ class CartController extends Controller
         $order->email = $request->email;
         $order->phone_number = $request->phone_number;
         $order->value = $value;
+        $order->created_at = Carbon::now();
         $order->transport_id = $transport->id;
         $order->payment_id = $payment->id;
         if(auth::user() != null)

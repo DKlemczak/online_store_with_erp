@@ -24,6 +24,7 @@ class CreateOrderTable extends Migration
             $table->string('email')->nullable();
             $table->string('phone_number')->nullable();
             $table->float('value',8,2)->nullable();
+            $table->dateTimeTz('created_at', $precision = 0);
             $table->foreignId('transport_id')->constrained('transport_type');
             $table->foreignId('payment_id')->constrained('payment_type');
             $table->foreignId('user_id')->nullable()->constrained('users');

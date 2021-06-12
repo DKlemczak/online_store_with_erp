@@ -28,7 +28,7 @@ namespace enova365.OnlineStoreWithErp.Models
             public JSONTowar(Towar towar, List<Grupa> grupy)
             {
                 Nazwa = towar.Nazwa;
-                UUID = towar.ID.ToString();
+                UUID = towar.Guid.ToString();
                 Kod = towar.Kod;
                 Ilosc = towar.Zasoby.Sum(z => z.Ilosc.Value);
                 Cena = towar.Ceny["Podstawowa"].Brutto.Value;

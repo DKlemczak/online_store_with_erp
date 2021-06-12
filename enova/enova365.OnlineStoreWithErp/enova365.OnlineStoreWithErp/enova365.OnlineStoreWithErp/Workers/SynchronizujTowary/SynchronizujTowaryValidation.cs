@@ -7,21 +7,25 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujTowary
 {
     public class SynchronizujTowaryValidation
     {
-        internal static void Validate(SynchronizujTowaryWorker worker)
+        private SynchronizujTowaryPrms Prms { get; }
+
+        public SynchronizujTowaryValidation(SynchronizujTowaryPrms prms) => Prms = prms;
+
+        public void Validate()
         {
-            if (worker.Prms.WebServiceAddress.IsNullOrEmpty())
+            if (Prms.WebServiceAddress.IsNullOrEmpty())
                 throw new ArgumentNullException("Nie podano adresu do Web Serwisu.");
 
-            if (worker.Prms.WebServiceToken.IsNullOrEmpty())
+            if (Prms.WebServiceToken.IsNullOrEmpty())
                 throw new ArgumentNullException("Nie podano tokenu.");
 
-            if (worker.Prms.Towary.Count == 0)
-                throw new ArgumentNullException($"Nie wybrano towarów do wsłania.");
+            if (Prms.Towary.Count == 0)
+                throw new ArgumentNullException($"Nie wybrano towarów do wysłania.");
 
-            if (worker.Prms.Grupy.Count == 0)
+            if (Prms.Grupy.Count == 0)
                 throw new ArgumentNullException($"Brak skonfigurowanych grup produktów.");
 
-            foreach (Towar towar in worker.Prms.Towary)
+            foreach (Towar towar in Prms.Towary)
             {
                 if (towar.GetGrupa().IsNullOrEmpty())
                     throw new ArgumentNullException($"Towar {towar} nie został przypisany do grupy.");

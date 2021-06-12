@@ -16,7 +16,6 @@ class CreateOrderTable extends Migration
         Schema::create('order', function (Blueprint $table) {
             $table->id();
             $table->string('user_name');
-            $table->string('user_surname');
             $table->string('document_number')->unique();
             $table->string('city');
             $table->string('post_code');

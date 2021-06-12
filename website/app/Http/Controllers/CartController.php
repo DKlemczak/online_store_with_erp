@@ -124,7 +124,6 @@ class CartController extends Controller
         $order = new Order();
         $order->uuid = Str::uuid();
         $order->user_name = $request->name;
-        $order->user_surname = $request->surname;
         $order->document_number = "zam/".$number;
         $order->city = $request->city;
         $order->post_code = $request->post_code;

@@ -24,6 +24,7 @@ class UserController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -35,7 +36,6 @@ class UserController extends Controller
         if(\Hash::check($request->old_password, $password))
         {
             $user->name = $request->name;
-            $user->surname = $request->surname;
             $user->NIP = $request->NIP;
             $user->city = $request->city;
             $user->post_code = $request->post_code;

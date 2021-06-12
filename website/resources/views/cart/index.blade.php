@@ -53,20 +53,11 @@
                 </div>
                 <div class="row">
                     <div class="col-6">
-                        <label for="name" class="col-form-label">Imię:</label>
+                        <label for="name" class="col-form-label">Nazwa:</label>
                         <input id="name" type="text" class="form-control" name="name" required>
                         @if ($errors->has('name'))
                         <span class="help-block">
                             <strong>{{ $errors->first('name') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                    <div class="col-6">
-                        <label for="surname" class="col-form-label">Nazwisko:</label>
-                        <input id="surname" type="text" class="form-control" name="surname" required>
-                        @if ($errors->has('surname'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('surname') }}</strong>
                         </span>
                         @endif
                     </div>

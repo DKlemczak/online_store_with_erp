@@ -12,7 +12,7 @@ class OrdersController extends Controller
     {
         $orders = Order::with('Positions')->where('status', 1)->with(array('User' => function($query)
         {
-            $query->select('users.id','users.name','users.surname','users.NIP','users.city','users.post_code','users.street','users.building_number');}))->get();
+            $query->select('users.id','users.name','users.NIP','users.city','users.post_code','users.street','users.building_number');}))->get();
 
         return response()->json($orders);
     }

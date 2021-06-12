@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<p> <strong> Kupujący: </strong> {!!$order->user_name!!} {!!$order->user_surname!!}</p>
+<p> <strong> Kupujący: </strong> {!!$order->user_name!!}</p>
 <p> <strong> Kontakt: e-mail: </strong> {!!$order->email!!}, <strong> telefon: </strong> {!!$order->phone_number!!}</p>
 <p><strong> Adres: </strong> {!!$order->city!!}, {!!$order->street!!} {!!$order->building_number!!} {!!$order->post_code!!}</p>
 <p> <strong>Zamówione produkty: </strong> </p>

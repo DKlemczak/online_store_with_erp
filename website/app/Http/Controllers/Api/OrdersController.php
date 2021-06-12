@@ -26,6 +26,7 @@ class OrdersController extends Controller
             if($order)
             {
                 $order->status = 2;
+                $order->document_number = $orderList['document_number'];
                 $order->save();
 
             }

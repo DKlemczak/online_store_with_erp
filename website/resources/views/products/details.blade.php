@@ -19,7 +19,7 @@
         <p>{!!$product->description!!}</p>
         <h4> Cena: </h4>
         @if($product->discount > 0)
-        <p>{{$product->price - $product->price * ($product->discount * 0.01)}} <span style="text-decoration: line-through;color: red;">{!!$product->price!!}</span></p>
+        <p>{{number_format($product->price - $product->price * ($product->discount * 0.01),2,'.',',')}} <span style="text-decoration: line-through;color: red;">{!!$product->price!!}</span></p>
         @else
         <p>{!!$product->price!!}</p>
         

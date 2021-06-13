@@ -28,7 +28,7 @@
         @endforeach
         <div class="card-body">
         <h5 class="card-title">{!!$product->name!!}</h5>
-        <p class="card-text">{{$product->price - $product->price * ($product->discount * 0.01)}} <span style="text-decoration: line-through;color: red;"> {!!$product->price!!}</span> zł</p>
+        <p class="card-text">{{number_format($product->price - $product->price * ($product->discount * 0.01),2,'.',',')}} <span style="text-decoration: line-through;color: red;"> {!!$product->price!!}</span> zł</p>
         <a href="{{ route('products.details', [$product->Products_Group->name,$product->id]) }}" class="btn btn-primary">Przejdź do produktu</a>
         </div>
         </div>  

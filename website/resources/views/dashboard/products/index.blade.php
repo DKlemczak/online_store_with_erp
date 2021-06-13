@@ -29,7 +29,7 @@
         </div>
         @if($product->discount > 0)
         <div class="col-2 justify-content-center" style="display: flex;">
-                <p style="align-self: center"  class="m-0">{{$product->price - $product->price * ($product->discount * 0.01)}} <span style="text-decoration: line-through;color: red;">{!!$product->price!!}</span></p>
+                <p style="align-self: center"  class="m-0">{{number_format($product->price - $product->price * ($product->discount * 0.01),2,'.',',')}}<span style="text-decoration: line-through;color: red;">{!!$product->price!!}</span></p>
             </div>
         @else
             <div class="col-2  justify-content-center" style="display: flex;">

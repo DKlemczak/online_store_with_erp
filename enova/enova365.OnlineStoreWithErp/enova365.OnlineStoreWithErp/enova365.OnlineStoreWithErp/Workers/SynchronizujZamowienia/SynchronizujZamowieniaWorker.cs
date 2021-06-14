@@ -191,6 +191,7 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
             {
                 Prms.HandelModule.Towary.Towary.AddRow(usluga);
 
+                usluga.Typ = TypTowaru.Usługa;
                 usluga.Nazwa = name;
                 usluga.DefinicjaStawki = Prms.CoreModule.DefStawekVat.WgKodu["-"];
 
@@ -201,9 +202,7 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
         }
 
         private decimal ValueOfFV(DokumentHandlowy dokument)
-        {
-            return new Currency(dokument.Pozycje.Sum(p => p.WartoscCy.Value * (Percent.Hundred + p.Towar.ProcentVAT))).Value;
-        }
+            => dokument.Pozycje.Sum(p => new Currency(p.WartoscCy.Value * (Percent.Hundred + p.Towar.ProcentVAT)).Value);
 
         #region Metody ustawiające wartości
 

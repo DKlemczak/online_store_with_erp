@@ -169,8 +169,8 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
                     SetPozycjaValues(pozycja, jsonPosition);
                 }
 
-                if (dokument.BruttoCy.Value != decimal.Parse(zamowienie.Value.ToString()))
-                    throw new Exception($"Zsumowane pozycje dają wartość: {dokument.BruttoCy}, a pobrane zamówienie posiada wartość: {zamowienie.Value}");
+                if (ValueOfFV(dokument) != decimal.Parse(zamowienie.Value.ToString()))
+                    throw new Exception($"Zsumowane pozycje dają wartość: {ValueOfFV(dokument)}, a pobrane zamówienie posiada wartość: {zamowienie.Value}");
 
                 trans.CommitUI();
             }
@@ -196,6 +196,11 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
             }
 
             return usluga;
+        }
+
+        private decimal ValueOfFV(DokumentHandlowy dokument)
+        {
+            return dokument.Pozycje.Sum(p => p.WartoscCy.Value);
         }
 
         #region Metody ustawiające wartości

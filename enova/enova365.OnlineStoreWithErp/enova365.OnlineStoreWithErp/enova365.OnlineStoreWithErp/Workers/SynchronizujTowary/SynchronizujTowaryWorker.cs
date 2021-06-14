@@ -10,7 +10,7 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujTowary
 {
     public class SynchronizujTowaryWorker
     {
-        public SynchronizujTowaryPrms Prms { get; }
+        private SynchronizujTowaryPrms Prms { get; }
 
         private SynchronizujTowaryWorker(SynchronizujTowaryPrms prms) => Prms = prms;
 

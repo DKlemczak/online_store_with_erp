@@ -149,7 +149,7 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
                 transportPozycja.Towar = GetOrAddUsluga(zamowienie.Transport.Name);
                 transportPozycja.Ilosc = new Quantity(1);
                 transportPozycja.Cena = new Currency(zamowienie.Transport.Price);
-                transportPozycja.DefinicjaStawki = Prms.CoreModule.DefStawekVat.WgKodu["-"];
+                //transportPozycja.DefinicjaStawki = Prms.CoreModule.DefStawekVat.WgKodu["-"];
                 //transportPozycja.Cena = new Currency(zamowienie.Transport.Price / (Percent.Hundred + transportPozycja.Towar.ProcentVAT));
 
                 #endregion Transport
@@ -161,7 +161,7 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
                 paymentPozycja.Towar = GetOrAddUsluga(zamowienie.Payment.Name);
                 paymentPozycja.Ilosc = new Quantity(1);
                 paymentPozycja.Cena = new Currency(zamowienie.Payment.Price);
-                paymentPozycja.DefinicjaStawki = Prms.CoreModule.DefStawekVat.WgKodu["-"];
+                //paymentPozycja.DefinicjaStawki = Prms.CoreModule.DefStawekVat.WgKodu["-"];
                 //paymentPozycja.Cena = new Currency(zamowienie.Payment.Price / (Percent.Hundred + paymentPozycja.Towar.ProcentVAT));
 
                 #endregion Sposób zapłaty

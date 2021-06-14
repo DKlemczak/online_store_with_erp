@@ -5,5 +5,10 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <Reference Include="Soneta.Forms">
+      <HintPath>C:\Program Files (x86)\Soneta\enova365 2012.5.11.0\Soneta.Forms.dll</HintPath>
+      <SpecificVersion>false</SpecificVersion>
+      <Private>false</Private>
+    </Reference>
   </ItemGroup>
 </Project>

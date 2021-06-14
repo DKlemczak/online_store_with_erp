@@ -2,7 +2,7 @@
 <DataForm xmlns="http://www.enova.pl/schema/form.xsd" Priority="1000">
   <Page CaptionHtml="OnlineStoreWithErp/Web serwis" DataContext="{new WebServiceConfigPage}">
 
-    <Field CaptionHtml="Adres Webserwisu" EditValue="{WebServiceAddress}" />
-    <Field CaptionHtml="Token" EditValue="{WebServiceToken}" />
+    <Field CaptionHtml="Adres Webserwisu" EditValue="{WebServiceAddress}" Width="100" />
+    <Field CaptionHtml="Token" EditValue="{WebServiceToken}" Width="100" />
   </Page>
 </DataForm>

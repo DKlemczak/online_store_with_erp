@@ -3,8 +3,9 @@
   <Page Name="TowarExtViewPage_ePage" CaptionHtml="Edycja cech towaru" DataContext="{new TowarExtView}">
     <Field CaptionHtml="Grupa" EditValue="{GrupaString}" />
     <Field CaptionHtml="CzyAktywna" EditValue="{IsActive}" />
-    <Field CaptionHtml="Tagi" EditValue="{Tagi}" />
     <Field CaptionHtml="Rabat" EditValue="{Rabat}" />
-    <Field CaptionHtml="Opis" EditValue="{Opis}" />
+    <Label CaptionHtml="Tagi powinny być oddzielone znakiem ';'" />
+    <Field CaptionHtml="Tagi" EditValue="{Tagi}" Width="100" />
+    <Field CaptionHtml="Opis" EditValue="{Opis}" Width="100" Height="20" />
   </Page>
 </DataForm>

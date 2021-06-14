@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row d-none d-lg-block"> 
-<div class="col-12 col-lg-6">Nazwa:</div>
-<div class="col-12 col-lg-2">Ilość:</div>
-<div class="col-12 col-lg-2">Cena:</div>
-<div class="col-12 col-lg-2">Usuń</div></div>
+<div class="row"> 
+    <div class="col-12 col-lg-6">Nazwa:</div>
+    <div class="col-12 col-lg-2">Ilość:</div>
+    <div class="col-12 col-lg-2">Cena:</div>
+    <div class="col-12 col-lg-2">Usuń</div>
+</div>
 @foreach ($cart as $product)
 <div class="row">
     <div class="col-12 col-lg-6"> {!!$product['name']!!}

@@ -5,7 +5,7 @@
 <p> <strong> Kontakt: e-mail: </strong> {!!$order->email!!}, <strong> telefon: </strong> {!!$order->phone_number!!}</p>
 <p><strong> Adres: </strong> {!!$order->city!!}, {!!$order->street!!} {!!$order->building_number!!} {!!$order->post_code!!}</p>
 <p> <strong>Zamówione produkty: </strong> </p>
-<div class="row d-none d-lg-block"> 
+<div class="row"> 
 <div class="col-12 col-lg-6">Nazwa:</div>
 <div class="col-12 col-lg-2">Ilość:</div>
 <div class="col-12 col-lg-2">Cena:</div>

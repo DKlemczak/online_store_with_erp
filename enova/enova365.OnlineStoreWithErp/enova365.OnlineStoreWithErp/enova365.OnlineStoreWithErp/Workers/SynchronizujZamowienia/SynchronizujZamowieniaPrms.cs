@@ -1,5 +1,6 @@
 ﻿using enova365.OnlineStoreWithErp.Config;
 using Soneta.Business;
+using Soneta.Core;
 using Soneta.CRM;
 using Soneta.Handel;
 using Soneta.Magazyny;
@@ -14,6 +15,7 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
         public Session Session { get; }
         public CRMModule CRMModule { get; }
         public HandelModule HandelModule { get; }
+        public CoreModule CoreModule { get; }
         public List<DokumentHandlowy> SavedDocuments { get; }
         public List<Kontrahent> NewKontrahets { get; }
         public string WebServiceToken { get; }
@@ -25,6 +27,7 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
             Magazyn = (Magazyn)context[typeof(Magazyn)];
             HandelModule = Session.GetHandel();
             CRMModule = Session.GetCRM();
+            CoreModule = Session.GetCore();
             SavedDocuments = new List<DokumentHandlowy>();
             NewKontrahets = new List<Kontrahent>();
 

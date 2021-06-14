@@ -3,6 +3,7 @@ using enova365.OnlineStoreWithErp.Utils;
 using Newtonsoft.Json;
 using Soneta.Business;
 using Soneta.Business.UI;
+using Soneta.Core;
 using Soneta.CRM;
 using Soneta.Forms;
 using Soneta.Handel;
@@ -147,7 +148,9 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
                 Prms.HandelModule.PozycjeDokHan.AddRow(transportPozycja);
                 transportPozycja.Towar = GetOrAddUsluga(zamowienie.Transport.Name);
                 transportPozycja.Ilosc = new Quantity(1);
-                transportPozycja.Cena = new Currency(zamowienie.Transport.Price / (Percent.Hundred + transportPozycja.Towar.ProcentVAT));
+                transportPozycja.Cena = new Currency(zamowienie.Transport.Price);
+                transportPozycja.DefinicjaStawki = Prms.CoreModule.DefStawekVat.WgKodu["-"];
+                //transportPozycja.Cena = new Currency(zamowienie.Transport.Price / (Percent.Hundred + transportPozycja.Towar.ProcentVAT));
 
                 #endregion Transport
 
@@ -157,7 +160,9 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
                 Prms.HandelModule.PozycjeDokHan.AddRow(paymentPozycja);
                 paymentPozycja.Towar = GetOrAddUsluga(zamowienie.Payment.Name);
                 paymentPozycja.Ilosc = new Quantity(1);
-                paymentPozycja.Cena = new Currency(zamowienie.Payment.Price / (Percent.Hundred + paymentPozycja.Towar.ProcentVAT));
+                paymentPozycja.Cena = new Currency(zamowienie.Payment.Price);
+                paymentPozycja.DefinicjaStawki = Prms.CoreModule.DefStawekVat.WgKodu["-"];
+                //paymentPozycja.Cena = new Currency(zamowienie.Payment.Price / (Percent.Hundred + paymentPozycja.Towar.ProcentVAT));
 
                 #endregion Sposób zapłaty
 
@@ -191,6 +196,7 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
                 Prms.HandelModule.Towary.Towary.AddRow(usluga);
 
                 usluga.Nazwa = name;
+                usluga.DefinicjaStawki = Prms.CoreModule.DefStawekVat.WgKodu["-"];
 
                 trans.Commit();
             }

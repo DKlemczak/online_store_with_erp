@@ -98,18 +98,21 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
 
         private Kontrahent GetOrCreateKontrahent(JSONSynchronizujZamowienia zamowienie)
         {
-            if (Prms.CRMModule.Kontrahenci.WgKodu.FirstOrDefault(k => k.EMAIL == zamowienie.Email) is Kontrahent findedKontrahent)
+            if (zamowienie.User == null)
+                return Prms.CRMModule.Kontrahenci.WgKodu["!INCYDENTALNY"];
+
+            if (Prms.CRMModule.Kontrahenci.WgKodu.FirstOrDefault(k => k.EMAIL == zamowienie.User.Email) is Kontrahent findedKontrahent)
                 return findedKontrahent;
 
             Kontrahent kontrahent = new Kontrahent();
 
-            using (ITransaction trans = Prms.Session.Logout(true))
+            //using (ITransaction trans = Prms.Session.Logout(true))
             {
                 Prms.CRMModule.Kontrahenci.AddRow(kontrahent);
 
-                SetKontrahentValues(kontrahent, zamowienie);
+                SetKontrahentValues(kontrahent, zamowienie.User);
 
-                trans.Commit();
+                //trans.Commit();
             }
 
             Prms.NewKontrahets.Add(kontrahent);
@@ -138,6 +141,26 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
 
                 SetDokumentValues(dokument, zamowienie, kontrahent);
 
+                #region Transport
+
+                PozycjaDokHandlowego transportPozycja = new PozycjaDokHandlowego(dokument);
+                Prms.HandelModule.PozycjeDokHan.AddRow(transportPozycja);
+                transportPozycja.Towar = GetOrAddUsluga(zamowienie.Transport.Name);
+                transportPozycja.Ilosc = new Quantity(1);
+                transportPozycja.Cena = new Currency(zamowienie.Transport.Price / (Percent.Hundred + transportPozycja.Towar.ProcentVAT));
+
+                #endregion Transport
+
+                #region Sposób zapłaty
+
+                PozycjaDokHandlowego paymentPozycja = new PozycjaDokHandlowego(dokument);
+                Prms.HandelModule.PozycjeDokHan.AddRow(paymentPozycja);
+                paymentPozycja.Towar = GetOrAddUsluga(zamowienie.Payment.Name);
+                paymentPozycja.Ilosc = new Quantity(1);
+                paymentPozycja.Cena = new Currency(zamowienie.Payment.Price / (Percent.Hundred + paymentPozycja.Towar.ProcentVAT));
+
+                #endregion Sposób zapłaty
+
                 foreach (JSONSynchronizujZamowienia.JSONPosition jsonPosition in zamowienie.Positions)
                 {
                     PozycjaDokHandlowego pozycja = new PozycjaDokHandlowego(dokument);
@@ -146,26 +169,49 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
                     SetPozycjaValues(pozycja, jsonPosition);
                 }
 
+                if (dokument.BruttoCy.Value != decimal.Parse(zamowienie.Value.ToString()))
+                    throw new Exception($"Zsumowane pozycje dają wartość: {dokument.BruttoCy}, a pobrane zamówienie posiada wartość: {zamowienie.Value}");
+
                 trans.CommitUI();
             }
 
             return dokument;
         }
 
+        private Towar GetOrAddUsluga(string name)
+        {
+            RowCondition cond = new FieldCondition.Equal(nameof(Towar.Typ), TypTowaru.Usługa);
+            if (Prms.HandelModule.Towary.Towary.WgNazwy[name][cond].FirstOrDefault() is Towar findedUsluga)
+                return findedUsluga;
+
+            Towar usluga = new Towar();
+
+            //using (ITransaction trans = Prms.Session.Logout(true))
+            {
+                Prms.HandelModule.Towary.Towary.AddRow(usluga);
+
+                usluga.Nazwa = name;
+
+                //trans.Commit();
+            }
+
+            return usluga;
+        }
+
         #region Metody ustawiające wartości
 
-        private void SetKontrahentValues(Kontrahent kontrahent, JSONSynchronizujZamowienia zamowienie)
+        private void SetKontrahentValues(Kontrahent kontrahent, JSONSynchronizujZamowienia.JSONUser user)
         {
-            kontrahent.Nazwa = zamowienie.User.Name;
-            kontrahent.EMAIL = zamowienie.Email;
-            kontrahent.Adres.Miejscowosc = zamowienie.User.City.IsNullOrEmpty() ? "" : zamowienie.User.City;
-            kontrahent.Adres.KodPocztowyS = zamowienie.User.PostCode.IsNullOrEmpty() ? "" : zamowienie.User.PostCode;
-            kontrahent.Adres.Ulica = zamowienie.User.Street.IsNullOrEmpty() ? "" : zamowienie.User.Street;
-            kontrahent.EuVAT = zamowienie.User.NIP.IsNullOrEmpty() ? "" : zamowienie.User.NIP;
+            kontrahent.Nazwa = user.Name;
+            kontrahent.EMAIL = user.Email;
+            kontrahent.Adres.Miejscowosc = user.City.IsNullOrEmpty() ? "" : user.City;
+            kontrahent.Adres.KodPocztowyS = user.PostCode.IsNullOrEmpty() ? "" : user.PostCode;
+            kontrahent.Adres.Ulica = user.Street.IsNullOrEmpty() ? "" : user.Street;
+            kontrahent.EuVAT = user.NIP.IsNullOrEmpty() ? "" : user.NIP;
 
-            if (zamowienie.User.BuildingNumber.IsNullOrEmpty() == false)
+            if (user.BuildingNumber.IsNullOrEmpty() == false)
             {
-                string[] domLokal = zamowienie.User.BuildingNumber.Split('/');
+                string[] domLokal = user.BuildingNumber.Split('/');
                 kontrahent.Adres.NrDomu = domLokal[0].IsNullOrEmpty() ? "" : domLokal[0];
                 kontrahent.Adres.NrLokalu = domLokal.Count() == 1 ? "" : domLokal[1];
             }
@@ -194,6 +240,8 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
             dokument.DaneOdbiorcy.Adres.Ulica = zamowienie.Street;
             dokument.DaneOdbiorcy.Adres.NrDomu = domLokal[0];
             dokument.DaneOdbiorcy.Adres.NrLokalu = domLokal.Count() == 1 ? "" : domLokal[1];
+
+            dokument.Opis = $"Email: {zamowienie.Email}{Environment.NewLine}Telefon: {zamowienie.PhoneNumber}";
         }
 
         private void SetPozycjaValues(PozycjaDokHandlowego pozycja, JSONSynchronizujZamowienia.JSONPosition jsonPosition)

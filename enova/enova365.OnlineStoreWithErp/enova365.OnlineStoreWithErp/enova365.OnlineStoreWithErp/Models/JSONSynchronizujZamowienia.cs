@@ -32,6 +32,9 @@ namespace enova365.OnlineStoreWithErp.Models
         [JsonProperty("email")]
         public string Email { get; set; }
 
+        [JsonProperty("phone_number")]
+        public string PhoneNumber { get; set; }
+
         [JsonProperty("value")]
         public double Value { get; set; }
 
@@ -55,6 +58,12 @@ namespace enova365.OnlineStoreWithErp.Models
 
         [JsonProperty("user")]
         public JSONUser User { get; set; }
+
+        [JsonProperty("transport")]
+        public JSONTransport Transport { get; set; }
+
+        [JsonProperty("payment")]
+        public JSONPayment Payment { get; set; }
 
         public class JSONPosition
         {
@@ -102,6 +111,33 @@ namespace enova365.OnlineStoreWithErp.Models
 
             [JsonProperty("enova_code")]
             public string EnovaCode { get; set; }
+
+            [JsonProperty("email")]
+            public string Email { get; set; }
+        }
+
+        public class JSONTransport
+        {
+            [JsonProperty("id")]
+            public int Id { get; set; }
+
+            [JsonProperty("price")]
+            public double Price { get; set; }
+
+            [JsonProperty("name")]
+            public string Name { get; set; }
+        }
+
+        public class JSONPayment
+        {
+            [JsonProperty("id")]
+            public int Id { get; set; }
+
+            [JsonProperty("price")]
+            public double Price { get; set; }
+
+            [JsonProperty("name")]
+            public string Name { get; set; }
         }
     }
 }

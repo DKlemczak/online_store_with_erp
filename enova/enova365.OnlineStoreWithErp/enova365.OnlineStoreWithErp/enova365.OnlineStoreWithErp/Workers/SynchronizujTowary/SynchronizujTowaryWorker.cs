@@ -20,7 +20,8 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujTowary
 
             try
             {
-                SynchronizujTowaryPrms prms = new SynchronizujTowaryPrms(session, session.GetTowary().Towary.WgKodu);
+                RowCondition cond = new FieldCondition.Equal(nameof(Towar.Typ), TypTowaru.Towar);
+                SynchronizujTowaryPrms prms = new SynchronizujTowaryPrms(session, session.GetTowary().Towary.WgKodu[cond]);
                 SynchronizujTowaryWorker worker = new SynchronizujTowaryWorker(prms);
 
                 return worker.SynchronizujTowary();

@@ -16,7 +16,7 @@ class Order extends Model
 
     public function Payment()
     {
-        return $this->hasOne(Payment_Type::class);
+        return $this->belongsTo(Payment_Type::class);
     }
 
     public function User()
@@ -26,6 +26,6 @@ class Order extends Model
 
     public function Transport()
     {
-        return $this->hasOne(Transport_Type::class);
+        return $this->belongsTo(Transport_Type::class);
     }
 }

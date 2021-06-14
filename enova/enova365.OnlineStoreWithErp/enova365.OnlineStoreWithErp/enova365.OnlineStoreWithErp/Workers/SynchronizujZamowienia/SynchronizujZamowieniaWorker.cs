@@ -106,13 +106,13 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
 
             Kontrahent kontrahent = new Kontrahent();
 
-            //using (ITransaction trans = Prms.Session.Logout(true))
+            using (ITransaction trans = Prms.Session.Logout(true))
             {
                 Prms.CRMModule.Kontrahenci.AddRow(kontrahent);
 
                 SetKontrahentValues(kontrahent, zamowienie.User);
 
-                //trans.Commit();
+                trans.Commit();
             }
 
             Prms.NewKontrahets.Add(kontrahent);
@@ -186,13 +186,13 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
 
             Towar usluga = new Towar();
 
-            //using (ITransaction trans = Prms.Session.Logout(true))
+            using (ITransaction trans = Prms.Session.Logout(true))
             {
                 Prms.HandelModule.Towary.Towary.AddRow(usluga);
 
                 usluga.Nazwa = name;
 
-                //trans.Commit();
+                trans.Commit();
             }
 
             return usluga;

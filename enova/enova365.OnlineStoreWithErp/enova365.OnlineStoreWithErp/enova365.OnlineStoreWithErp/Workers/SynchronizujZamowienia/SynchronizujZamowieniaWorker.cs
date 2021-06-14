@@ -202,7 +202,7 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
 
         private decimal ValueOfFV(DokumentHandlowy dokument)
         {
-            return dokument.Pozycje.Sum(p => p.WartoscCy.Value * (Percent.Hundred + p.Towar.ProcentVAT));
+            return new Currency(dokument.Pozycje.Sum(p => p.WartoscCy.Value * (Percent.Hundred + p.Towar.ProcentVAT))).Value;
         }
 
         #region Metody ustawiające wartości

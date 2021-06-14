@@ -14,7 +14,13 @@ class OrdersController extends Controller
         {
             $query->select('users.id','users.email','users.name','users.NIP','users.city','users.post_code','users.street','users.building_number');
         }))->with('Transport')->with('Payment')->get();
-
+        foreach($orders as $order)
+        {
+            if($order->user_id == null)
+            {
+                $order->user_id = 0;
+            }
+        }
         return response()->json($orders);
     }
 

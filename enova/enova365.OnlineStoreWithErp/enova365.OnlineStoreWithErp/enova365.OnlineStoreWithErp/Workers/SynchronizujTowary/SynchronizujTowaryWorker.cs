@@ -4,6 +4,7 @@ using Soneta.Business;
 using Soneta.Forms;
 using Soneta.Towary;
 using System;
+using System.Linq;
 using System.Text;
 
 namespace enova365.OnlineStoreWithErp.Workers.SynchronizujTowary
@@ -20,8 +21,7 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujTowary
 
             try
             {
-                RowCondition cond = new FieldCondition.Equal(nameof(Towar.Typ), TypTowaru.Towar);
-                SynchronizujTowaryPrms prms = new SynchronizujTowaryPrms(session, session.GetTowary().Towary.WgKodu[cond]);
+                SynchronizujTowaryPrms prms = new SynchronizujTowaryPrms(session, session.GetTowary().Towary.WgKodu.Where(t => t.Typ == TypTowaru.Towar));
                 SynchronizujTowaryWorker worker = new SynchronizujTowaryWorker(prms);
 
                 return worker.SynchronizujTowary();

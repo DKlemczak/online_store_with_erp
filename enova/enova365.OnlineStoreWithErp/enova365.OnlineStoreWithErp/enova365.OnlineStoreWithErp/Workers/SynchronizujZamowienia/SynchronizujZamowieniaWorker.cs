@@ -181,8 +181,7 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
 
         private Towar GetOrAddUsluga(string name)
         {
-            RowCondition cond = new FieldCondition.Equal(nameof(Towar.Typ), TypTowaru.Usługa);
-            if (Prms.HandelModule.Towary.Towary.WgNazwy[name][cond].FirstOrDefault() is Towar findedUsluga)
+            if (Prms.HandelModule.Towary.Towary.WgNazwy.FirstOrDefault(t => t.Typ == TypTowaru.Usługa && t.Nazwa == name) is Towar findedUsluga)
                 return findedUsluga;
 
             Towar usluga = new Towar();

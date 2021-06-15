@@ -108,15 +108,18 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
                     PozycjaDokHandlowego pozycja = new PozycjaDokHandlowego(dokument);
                     Session.GetHandel().PozycjeDokHan.AddRow(pozycja);
 
-                    SetPozycjaValues(pozycja, jsonPosition);
+                    pozycja.Towar = HandelModule.Towary.Towary[Guid.Parse(jsonPosition.ProductUUID)];
+                    pozycja.Ilosc = new Quantity(jsonPosition.Amount);
+                    pozycja.Cena = new Currency(jsonPosition.Price / (Percent.Hundred + pozycja.Towar.ProcentVAT));
 
-                    double zmianaBrutto = double.Parse(pozycja.ZmianaBrutto.ToString());
-                    transportPozycja.Cena = new DoubleCy(transportPozycja.Cena.Value - (zmianaBrutto - (jsonPosition.Price * jsonPosition.Amount)));
+                    // Obniżam cenę transportu, żeby wartość całego dokumentu była zgodna z bazą danych
+                    double wartoscBrutto = double.Parse($"{pozycja.ZmianaBrutto}");
+                    transportPozycja.Cena -= new DoubleCy(wartoscBrutto - (jsonPosition.Price * jsonPosition.Amount));
                 }
 
                 trans.CommitUI();
 
-                if (dokument.BruttoCy.Value != decimal.Parse(Zamowienie.Value.ToString()))
+                if (dokument.BruttoCy.Value != decimal.Parse($"{Zamowienie.Value}"))
                     throw new Exception($"Zsumowane pozycje dają wartość: {dokument.BruttoCy.Value}, a pobrane zamówienie posiada wartość: {Zamowienie.Value}");
             }
 
@@ -189,13 +192,6 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
             dokument.DaneOdbiorcy.Adres.NrLokalu = domLokal.Count() == 1 ? "" : domLokal[1];
 
             dokument.Opis = $"Email: {zamowienie.Email}{Environment.NewLine}Telefon: {zamowienie.PhoneNumber}";
-        }
-
-        private void SetPozycjaValues(PozycjaDokHandlowego pozycja, JSONSynchronizujZamowienia.JSONPosition jsonPosition)
-        {
-            pozycja.Towar = HandelModule.Towary.Towary[Guid.Parse(jsonPosition.ProductUUID)];
-            pozycja.Ilosc = new Quantity(jsonPosition.Amount);
-            pozycja.Cena = new Currency(jsonPosition.Price / (Percent.Hundred + pozycja.Towar.ProcentVAT));
         }
 
         #endregion Metody ustawiające wartości

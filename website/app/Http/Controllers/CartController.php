@@ -72,6 +72,15 @@ class CartController extends Controller
                 }
                 $key++;
             }
+                $cart[$product->id] = [
+                    'id' => $product->id,
+                    'name' => $product->name,
+                    'amount' => $request->amount,
+                    'uuid' => $product->uuid,
+                    'price' => $product->price - $product->price * ($product->discount * 0.01)
+                ];
+
+            $message = 'Produkt dodano do koszyka';
         }
         session()->put('cart', $cart);
         return redirect()->back()->with('message', $message);

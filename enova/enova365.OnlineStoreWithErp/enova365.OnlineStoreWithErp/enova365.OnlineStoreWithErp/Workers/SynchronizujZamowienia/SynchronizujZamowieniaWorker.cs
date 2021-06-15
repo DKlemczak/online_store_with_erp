@@ -168,6 +168,8 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
                     Prms.HandelModule.PozycjeDokHan.AddRow(pozycja);
 
                     SetPozycjaValues(pozycja, jsonPosition);
+
+                    transportPozycja.Cena = new DoubleCy(decimal.Parse(transportPozycja.Cena.Value.ToString()) - (pozycja.ZmianaBrutto - decimal.Parse((jsonPosition.Price * jsonPosition.Amount).ToString())));
                 }
 
                 if (ValueOfFV(dokument) != decimal.Parse(zamowienie.Value.ToString()))

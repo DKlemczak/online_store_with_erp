@@ -169,7 +169,8 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
 
                     SetPozycjaValues(pozycja, jsonPosition);
 
-                    transportPozycja.Cena = new DoubleCy(decimal.Parse(transportPozycja.Cena.Value.ToString()) - (pozycja.ZmianaBrutto - decimal.Parse((jsonPosition.Price * jsonPosition.Amount).ToString())));
+                    double zmianaBrutto = double.Parse(pozycja.ZmianaBrutto.ToString());
+                    transportPozycja.Cena = new DoubleCy(transportPozycja.Cena.Value - (zmianaBrutto - (jsonPosition.Price * jsonPosition.Amount)));
                 }
 
                 if (ValueOfFV(dokument) != decimal.Parse(zamowienie.Value.ToString()))
@@ -181,8 +182,9 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
             return dokument;
         }
 
-        private Towar GetOrAddUsluga(string name)
+        private Towar GetOrAddUsluga(string nameToReplace)
         {
+            string name = nameToReplace.Replace("\r", "").Replace("\n", "");
             if (Prms.HandelModule.Towary.Towary.WgNazwy.FirstOrDefault(t => t.Typ == TypTowaru.Usługa && t.Nazwa == name) is Towar findedUsluga)
                 return findedUsluga;
 

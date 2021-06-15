@@ -10,24 +10,17 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
 {
     public class SynchronizujZamowieniaPrms
     {
-        public DefDokHandlowego Definicja => HandelModule.DefDokHandlowych.WgSymbolu["FV"];
         public Magazyn Magazyn { get; }
         public Session Session { get; }
-        public CRMModule CRMModule { get; }
-        public HandelModule HandelModule { get; }
-        public CoreModule CoreModule { get; }
         public List<DokumentHandlowy> SavedDocuments { get; }
         public List<Kontrahent> NewKontrahets { get; }
         public string WebServiceToken { get; }
         public string WebServiceAddress { get; }
 
-        public SynchronizujZamowieniaPrms(Session session, Context context)
+        public SynchronizujZamowieniaPrms(Context context)
         {
-            Session = session;
+            Session = context.Session;
             Magazyn = (Magazyn)context[typeof(Magazyn)];
-            HandelModule = Session.GetHandel();
-            CRMModule = Session.GetCRM();
-            CoreModule = Session.GetCore();
             SavedDocuments = new List<DokumentHandlowy>();
             NewKontrahets = new List<Kontrahent>();
 

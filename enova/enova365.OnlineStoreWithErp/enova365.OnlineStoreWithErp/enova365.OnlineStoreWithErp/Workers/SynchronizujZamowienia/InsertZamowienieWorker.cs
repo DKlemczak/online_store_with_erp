@@ -110,7 +110,18 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
 
                     pozycja.Towar = HandelModule.Towary.Towary[Guid.Parse(jsonPosition.ProductUUID)];
                     pozycja.Ilosc = new Quantity(jsonPosition.Amount);
-                    pozycja.UstawWartośćCy(new Currency(jsonPosition.Price * jsonPosition.Amount / (Percent.Hundred + pozycja.Towar.ProcentVAT)), true, true);
+
+                    if (dokument.OdBrutto)
+                        pozycja.Cena = new DoubleCy(jsonPosition.Price);
+                    else
+                    {
+                        // Zmienna, która z jakiegoś powodu nie chcę się ustawić, mimo, że jest get i set
+                        //pozycja.CenaBruttoPoRabacie = new DoubleCy(jsonPosition.Price);
+
+                        pozycja.UstawWartośćCy(new Currency(jsonPosition.Price * jsonPosition.Amount / (Percent.Hundred + pozycja.Towar.ProcentVAT)), true, true);
+                    }
+
+                    //pozycja.Cena = new DoubleCy(jsonPosition.Price / (Percent.Hundred + pozycja.Towar.ProcentVAT));
                 }
 
                 trans.CommitUI();

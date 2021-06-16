@@ -110,11 +110,7 @@ namespace enova365.OnlineStoreWithErp.Workers.SynchronizujZamowienia
 
                     pozycja.Towar = HandelModule.Towary.Towary[Guid.Parse(jsonPosition.ProductUUID)];
                     pozycja.Ilosc = new Quantity(jsonPosition.Amount);
-                    pozycja.Cena = new Currency(jsonPosition.Price / (Percent.Hundred + pozycja.Towar.ProcentVAT));
-
-                    // Obniżam cenę transportu, żeby wartość całego dokumentu była zgodna z bazą danych
-                    double wartoscBrutto = double.Parse($"{pozycja.ZmianaBrutto}");
-                    transportPozycja.Cena -= new DoubleCy(wartoscBrutto - (jsonPosition.Price * jsonPosition.Amount));
+                    pozycja.UstawWartośćCy(new Currency(jsonPosition.Price * jsonPosition.Amount / (Percent.Hundred + pozycja.Towar.ProcentVAT)), true, true);
                 }
 
                 trans.CommitUI();

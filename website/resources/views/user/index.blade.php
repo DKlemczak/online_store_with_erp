@@ -34,8 +34,10 @@
             <div class="col-2">
                 @if($Order->status == 0)
                     <p class="my-auto">Nie opłacono</p>
-                @else
+                @elseif($Order->status == 1)
                     <p class="my-auto">Opłacony</p>
+                @else
+                    <p class="my-auto">Zatwierdzony</p>
                 @endif
             </div>
             <div class="col-2">
@@ -62,22 +64,22 @@
                     </div>
                 </div>
                 @foreach($Order->Positions as $Position)
-                <div class="row">
-                    <div class="col-3">
-                        <p>{!!$Position->Product->name!!}</p>
+                    <div class="row">
+                        <div class="col-3">
+                            <p>{!!$Position->Product->name!!}</p>
+                        </div>
+                        <div class="col-3">
+                            <p>{!!$Position->amount!!}</p>
+                        </div>
+                        <div class="col-2">
+                            <p>{!!$Position->price!!} zł</p>
+                        </div>
+                        <div class="col-2">
+                            <p>{!!$Position->price * $Position->amount!!} zł</p>
+                        </div>
                     </div>
-                    <div class="col-3">
-                        <p>{!!$Position->amount!!}</p>
-                    </div>
-                    <div class="col-2">
-                        <p>{!!$Position->price!!} zł</p>
-                    </div>
-                    <div class="col-2">
-                        <p>{!!$Position->price * $Position->amount!!} zł</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
-        @endforeach
         @endforeach
 @endsection

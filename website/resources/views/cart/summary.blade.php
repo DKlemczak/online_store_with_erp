@@ -6,9 +6,10 @@
 <p><strong> Adres: </strong> {!!$order->city!!}, {!!$order->street!!} {!!$order->building_number!!} {!!$order->post_code!!}</p>
 <p> <strong>Zamówione produkty: </strong> </p>
 <div class="row"> 
-<div class="col-12 col-lg-8">Nazwa:</div>
-<div class="col-12 col-lg-2">Ilość:</div>
-<div class="col-12 col-lg-2">Cena:</div>
+    <div class="col-12 col-lg-8">Nazwa:</div>
+    <div class="col-12 col-lg-2">Ilość:</div>
+    <div class="col-12 col-lg-2">Cena:</div>
+</div>
 @foreach ($cart as $product)
 <div class="row">
     <div class="col-12 col-lg-8"> {!!$product['name']!!}

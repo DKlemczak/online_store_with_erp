@@ -17,7 +17,7 @@ class APIToken
     public function handle(Request $request, Closure $next)
     {
         $token = $request->bearerToken();
-        if ($token == 'schKd2FYUG5iMkpwYkc1NU1qQxhPQT09O8luexduaWVya2CyMzs3NTtTZXJ2addlX2UycjBwMWk4dDsyMDE4LTA2LTE8IciSAjQzAAAwO3Rlc3RlDjNAXmdqLXNvZnQuccdc') {
+        if ($token == '') {
             return $next($request);
         }
         else {

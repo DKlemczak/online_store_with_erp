@@ -39,6 +39,9 @@
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"> <span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('posts') }}">Aktualności</a>
+                            </li>
                             <!-- DK:Pętla listująca grupy produktów, które nie są podgrupami i mają ustawioną wartość on_navbar na 1. W środku przekierowanie do listy produktów danej kategorii. Podkategorie listują się po najechaniu-->
                             @foreach($GlobalNavbarGroups as $GlobalNavbarGroup)
                                 <li class="nav-item">
@@ -104,7 +107,7 @@
 
     <div class="container-fluid pb-0 mb-0 justify-content-center text-light">
      <footer>
-         <div class="row my-5 justify-content-center">
+         <div class="row my-4 justify-content-center">
              <div class="col-11">
                  <div class="row mb-4">
                     <div class="col-12 my-auto mx-auto text-center">

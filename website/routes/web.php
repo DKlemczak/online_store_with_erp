@@ -22,6 +22,10 @@ Route::get('/cart','App\Http\Controllers\CartController@index')->name('cart');
 Route::get('/cart/removefromcart/{id}','App\Http\Controllers\CartController@removefromcart')->name('cart.remove');
 Route::post('/cart/summary','App\Http\Controllers\CartController@summary')->name('cart.summary');
 Route::get('/cart/createorder','App\Http\Controllers\CartController@createorder')->name('cart.createorder');
+Route::get('/posts', "App\Http\Controllers\PostController@index")->name("posts");
+Route::get('/posts/{id}', "App\Http\Controllers\PostController@details")->name("posts.details");
+Route::post('/posts/{id}/addcomment',"App\Http\Controllers\PostController@storecomment")->name("posts.details.addcomment");
+Route::get('/posts/{id}/destroycomment',"App\Http\Controllers\PostController@destroycomment")->name("posts.details.deletecomment")->middleware(['auth', 'admin']);
 
 Route::group(['middleware' => 'auth'], function()
 {
@@ -44,6 +48,15 @@ Route::group(['middleware' => 'admin'], function ()
         'create'  => 'dashboard.products.photos.create',
         'store'   => 'dashboard.products.photos.store',
         'destroy' => 'dashboard.products.photos.destroy'
+    ]], ['except' => ['show']])->middleware(['auth', 'admin']);
+
+    Route::resource('dashboard/posts', 'App\Http\Controllers\Dashboard\PostController', ['except'=>['show'], 'names' => [
+        'index'   => 'dashboard.posts.index',
+        'create'  => 'dashboard.posts.create',
+        'store'   => 'dashboard.posts.store',
+        'edit'    => 'dashboard.posts.edit',
+        'update'  => 'dashboard.posts.update',
+        'destroy' => 'dashboard.posts.destroy'
     ]], ['except' => ['show']])->middleware(['auth', 'admin']);
 
 });

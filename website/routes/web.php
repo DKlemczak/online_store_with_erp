@@ -26,6 +26,8 @@ Route::get('/posts', "App\Http\Controllers\PostController@index")->name("posts")
 Route::get('/posts/{id}', "App\Http\Controllers\PostController@details")->name("posts.details");
 Route::post('/posts/{id}/addcomment',"App\Http\Controllers\PostController@storecomment")->name("posts.details.addcomment");
 Route::get('/posts/{id}/destroycomment',"App\Http\Controllers\PostController@destroycomment")->name("posts.details.deletecomment")->middleware(['auth', 'admin']);
+Route::get('/contact', "App\Http\Controllers\ContactController@index")->name("contact");
+Route::post('/contact', "App\Http\Controllers\ContactController@store")->name("contact.save");
 
 Route::group(['middleware' => 'auth'], function()
 {

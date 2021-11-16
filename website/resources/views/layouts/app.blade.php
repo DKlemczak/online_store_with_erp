@@ -50,6 +50,9 @@
                                 <!-- DK:Potem dodam żeby każda nadrzędna kategoria miała listowane podkategorie. Nadkategorie będą listować wszystkie produkty swoich podkategorii. Podkategorie tylko swoje własne-->
                             @endforeach
                             <!-- Koniec pętli -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('contact') }}">Kontakt</a>
+                            </li>
                         </ul>
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">

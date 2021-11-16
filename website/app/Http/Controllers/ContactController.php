@@ -32,7 +32,7 @@ class ContactController extends Controller
             'user_query' => $request->get('message'),
         ), function($message) use ($request){
             $message->from($request->get('email'));
-            $message->to('napieratorklemens@gmail.com', 'Admin')->subject($request->get('subject'));
+            $message->to('funkyszklanky@gmail.com', 'Admin')->subject($request->get('subject'));
         });
 
         return back()->with('sukces', 'Wysyłanie wiadomości przebiegło pomyślnie.');

@@ -61,5 +61,12 @@ Route::group(['middleware' => 'admin'], function ()
         'destroy' => 'dashboard.posts.destroy'
     ]], ['except' => ['show']])->middleware(['auth', 'admin']);
 
+    Route::resource('dashboard/staticsites', 'App\Http\Controllers\Dashboard\StaticSitesController', ['except'=>['show'], 'names' => [
+        'index'   => 'dashboard.staticsites.index',
+        'edit'    => 'dashboard.staticsites.edit',
+        'update'  => 'dashboard.staticsites.update',
+    ]], ['except' => ['show']])->middleware(['auth', 'admin']);
+
+
 });
 Auth::routes();

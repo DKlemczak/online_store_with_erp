@@ -69,6 +69,12 @@
                 <div class="hero-bg"> </div>
             </div>
     </section>
+
+    <div class="row justify-content-center">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/iZD_VZAmLcs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <br> <br>
+
     <div class="row justify-content-center">
         <iframe src="https://calendar.google.com/calendar/embed?src=funkyszklanky%40gmail.com&ctz=Europe%2FWarsaw" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
     </div>

@@ -12,5 +12,10 @@
             <p class="h2 my-4">Aktualności</p>
         </div>
     </a>
+    <!-- <a class="nav-link m-0 p-0 w-25"  href="{{ route('dashboard.staticsites.index') }}">
+        <div class="col-12 text-center rounded" style="border: 2px solid #ffc90e;">
+            <p class="h2 my-4">Strony statyczne</p>
+        </div>
+    </a> -->
 </div>
 @endsection

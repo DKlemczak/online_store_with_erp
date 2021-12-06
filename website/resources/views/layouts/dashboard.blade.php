@@ -47,6 +47,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('dashboard.products.index') }}">Produkty</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('dashboard.posts.index') }}">Aktualności</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="{{ route('dashboard.staticsites.index') }}">Strony statyczne</a>
+                        </li> -->
                     </ul>
 
                     <!-- Right Side Of Navbar -->

@@ -39,7 +39,7 @@
                 @method('DELETE')
                 @csrf
                 <input class="form-control" type="hidden" name="post_id" value="{!!$post->id!!}">
-                <button type="submit" class="btn btn-danger">Usuń zdjęcie</button></a>
+                <button type="submit" class="btn btn-danger">Usuń post</button></a>
             </form>
         </div>
     </div>

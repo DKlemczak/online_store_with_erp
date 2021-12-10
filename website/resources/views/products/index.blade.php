@@ -25,7 +25,7 @@
                         @else
                             <p class="card-text">{!!$product->price!!} zł</p>
                         @endif
-                        <a href="{{ route('products.details', [$product->Products_Group->name,$product->id]) }}" class="btn btn-primary">Przejdź do produktu</a>
+                        <a href="{{ route('products.details', [$product->Products_Group->name,$product->id]) }}" class="button">Przejdź do produktu</a>
                     </div>
                 </div>
             </div>

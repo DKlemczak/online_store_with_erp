@@ -33,8 +33,8 @@
             </div>
         </div>
             <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-lg btn-secondary mr-1">Zapisz</button>
-                <button type="button" onclick="location.href='{{ route('dashboard.posts.index')}}'" class="btn btn-lg btn-secondary ml-1">Zamknij</button>
+                <button type="submit" class="button">Zapisz</button>
+                <button type="button" onclick="location.href='{{ route('dashboard.posts.index')}}'" class="button">Zamknij</button>
             </div>
     </div>
 </form>

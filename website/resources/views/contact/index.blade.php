@@ -40,7 +40,7 @@
                 </span>
             @endif
         </div>
-        <input type="submit" name="send" value="Wyślij" class="btn btn-dark btn-block">
+        <input type="submit" name="send" value="Wyślij" class="button">
     </form>
 </div>
 @endsection

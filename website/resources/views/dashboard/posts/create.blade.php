@@ -31,7 +31,7 @@
             </div>
         </div>
             <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-lg btn-secondary">Zapisz</button>
+                <button type="submit" class="button">Zapisz</button>
             </div>
         </div>
     </div>

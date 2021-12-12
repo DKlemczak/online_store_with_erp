@@ -41,20 +41,13 @@
         @endauth
 
 
-    <div class="row d-flex justify-content-center mt-100 mb-100">
+    
     
         
         @foreach($post->comments as $comment)
-            <div class=" mt-5 mb-2">
-                @auth
-                    @if(Auth::user()->is_admin)
 
-                    <button class="button"> <a href="{{ route('posts.details.deletecomment', $comment->id) }}">Usuń komentarz</a></button>  
-                   
-                    @endif
-                @endauth
-            </div>
 
+        <div class="row d-flex justify-content-center mt-100 mb-100">
             <div class="comment-widgets">
                 <div class="d-flex flex-row comment-row m-t-0">
                     <div class="comment-text w-100">
@@ -63,6 +56,16 @@
                          
                     </div>
                 </div> 
+            <div>
+                @auth
+                    @if(Auth::user()->is_admin)
+
+                    <button class="button"> <a href="{{ route('posts.details.deletecomment', $comment->id) }}">Usuń komentarz</a></button>  
+                   
+                    @endif
+                @endauth
+            </div>
+           
                
                 </div> <!-- Card -->
         @endforeach
